@@ -1,0 +1,2174 @@
+{
+  "surum": "0.2",
+  "guncelleme": "2026-11-13",
+  "sema": {
+    "sira": "Sorular dizideki sırayla gösterilir; id sırayı belirtmez.",
+    "tip": "Yoksa evet/hayır sorusudur. 'acik' ise yalnızca soruldu/sorulmadı işaretlenir.",
+    "kosul": "Yoksa herkese sorulur. Değerler: 'kadin', '65_ustu'.",
+    "alt_sorular": "Ana soru 'evet' ya da 'soruldu' işaretlenince açılan hatırlatmalar; veri girişi yok.",
+    "dogrulanmali": "true ise soru kaynak metninde doğrudan görülmedi."
+  },
+  "ortak": {
+    "sorular": [
+      {
+        "id": "ortak-15",
+        "metin": "Sizi hastaneye getiren şikayet nedir?",
+        "oncelik": "standart",
+        "dogrulanmali": false,
+        "kaynak": {
+          "ad": "Ehsanullah ve ark. 2015, Tablo 1 (RCSEng ölçütleri: Presenting complaint, History of presenting complaint)",
+          "url": "https://www.pubmed.gov/25750727/"
+        },
+        "alt_sorular": [
+          {
+            "id": "ortak-15a",
+            "metin": "Ne zaman başladı?"
+          },
+          {
+            "id": "ortak-15b",
+            "metin": "Başladığından beri arttı mı, azaldı mı, aralıklı mı?"
+          },
+          {
+            "id": "ortak-15c",
+            "metin": "Daha önce benzer bir şikayetiniz oldu mu?"
+          },
+          {
+            "id": "ortak-15d",
+            "metin": "Bu şikayet için başka bir yere başvurdunuz mu ya da ilaç kullandınız mı?"
+          }
+        ],
+        "tip": "acik"
+      },
+      {
+        "id": "ortak-01",
+        "metin": "Doktor tarafından konulmuş ve takip edilen bir hastalığınız var mı (şeker, tansiyon, kalp, akciğer, böbrek, karaciğer hastalığı gibi)?",
+        "oncelik": "standart",
+        "dogrulanmali": false,
+        "kaynak": {
+          "ad": "StatPearls - Acute Abdomen (History and Physical)",
+          "url": "https://www.ncbi.nlm.nih.gov/books/NBK459328/"
+        },
+        "alt_sorular": [
+          {
+            "id": "ortak-01a",
+            "metin": "Hangi hastalık, kaç yıldır var?"
+          },
+          {
+            "id": "ortak-01b",
+            "metin": "Son zamanlarda bu hastalığınız kötüleşti mi ya da bu nedenle hastaneye yattınız mı?"
+          }
+        ]
+      },
+      {
+        "id": "ortak-02",
+        "metin": "Daha önce herhangi bir ameliyat oldunuz mu?",
+        "oncelik": "standart",
+        "dogrulanmali": false,
+        "kaynak": {
+          "ad": "StatPearls - Acute Abdomen (History and Physical)",
+          "url": "https://www.ncbi.nlm.nih.gov/books/NBK459328/"
+        },
+        "alt_sorular": [
+          {
+            "id": "ortak-02a",
+            "metin": "Hangi ameliyat, ne zaman yapıldı?"
+          },
+          {
+            "id": "ortak-02b",
+            "metin": "Ameliyat açık mı, kapalı (laparoskopik) mı yapıldı?"
+          },
+          {
+            "id": "ortak-02c",
+            "metin": "Ameliyattan sonra bir sorun (kanama, enfeksiyon, yara açılması, fıtık) oldu mu?"
+          },
+          {
+            "id": "ortak-02d",
+            "metin": "Narkoz (anestezi) sırasında ya da sonrasında bir sorun yaşadınız mı?"
+          }
+        ]
+      },
+      {
+        "id": "ortak-03",
+        "metin": "Düzenli kullandığınız bir ilaç var mı (bitkisel ürünler ve vitaminler dahil)?",
+        "oncelik": "standart",
+        "dogrulanmali": false,
+        "kaynak": {
+          "ad": "StatPearls - Breast Nipple Discharge (History and Physical: medications history)",
+          "url": "https://www.ncbi.nlm.nih.gov/books/NBK430938/"
+        },
+        "alt_sorular": [
+          {
+            "id": "ortak-03a",
+            "metin": "İlaçların adı, dozu ve kullanma sıklığı nedir?"
+          },
+          {
+            "id": "ortak-03b",
+            "metin": "İlaçlarınızı en son ne zaman aldınız?"
+          }
+        ]
+      },
+      {
+        "id": "ortak-06",
+        "metin": "Herhangi bir ilaca, besine, lateks/eldivene ya da flastere alerjiniz var mı?",
+        "oncelik": "kritik",
+        "dogrulanmali": false,
+        "kaynak": {
+          "ad": "Ehsanullah ve ark. 2015, Tablo 1 (Allergies); Chow ve ark. 2014, standart 1 (alerji durumu)",
+          "url": "https://www.pubmed.gov/25750727/"
+        },
+        "alt_sorular": [
+          {
+            "id": "ortak-06a",
+            "metin": "Hangi maddeye karşı?"
+          },
+          {
+            "id": "ortak-06b",
+            "metin": "Ne tür bir tepki oldu (döküntü, nefes darlığı, dudak/dil şişmesi, bayılma)?"
+          }
+        ]
+      },
+      {
+        "id": "ortak-04",
+        "metin": "Kan sulandırıcı ya da pıhtı önleyici bir ilaç kullanıyor musunuz (aspirin, klopidogrel, varfarin, rivaroksaban, apiksaban, edoksaban, dabigatran, iğne şeklinde kan sulandırıcılar gibi)?",
+        "oncelik": "kritik",
+        "dogrulanmali": false,
+        "kaynak": {
+          "ad": "StatPearls - Rectal Bleeding (anticoagulant use)",
+          "url": "https://www.ncbi.nlm.nih.gov/books/NBK563143/"
+        },
+        "alt_sorular": [
+          {
+            "id": "ortak-04a",
+            "metin": "İlacın adı ve dozu nedir?"
+          },
+          {
+            "id": "ortak-04b",
+            "metin": "Bu ilacı hangi nedenle kullanıyorsunuz (kalp pili/ritim bozukluğu, kalp kapağı, stent, pıhtı öyküsü, inme)?"
+          },
+          {
+            "id": "ortak-04c",
+            "metin": "Son dozu ne zaman aldınız?"
+          },
+          {
+            "id": "ortak-04d",
+            "metin": "Varfarin kullanıyorsanız en son INR değeriniz ne zaman ve kaç ölçüldü?"
+          }
+        ]
+      },
+      {
+        "id": "ortak-05",
+        "metin": "Kolay morarma, uzun süren kanama ya da bilinen bir kanama/pıhtılaşma hastalığınız var mı?",
+        "oncelik": "kritik",
+        "dogrulanmali": false,
+        "kaynak": {
+          "ad": "StatPearls - Rectal Bleeding (bleeding disorders)",
+          "url": "https://www.ncbi.nlm.nih.gov/books/NBK563143/"
+        },
+        "alt_sorular": [
+          {
+            "id": "ortak-05a",
+            "metin": "Diş çekimi ya da önceki ameliyatlarda fazla kanama oldu mu?"
+          },
+          {
+            "id": "ortak-05b",
+            "metin": "Ailede kanama hastalığı olan var mı?"
+          }
+        ]
+      },
+      {
+        "id": "ortak-16",
+        "metin": "Daha önce bacak damarlarınızda ya da akciğerinizde pıhtı oldu mu?",
+        "oncelik": "standart",
+        "dogrulanmali": true,
+        "kaynak": {
+          "ad": "Gupta ve ark. 2013 (VTE risk değerlendirmesi denetlenen alan; soru metni kaynakta yok, cerrah doğrulamalı)",
+          "url": "https://www.dovepress.com/improvement-in-clinical-recording-keeping-following-the-introduction-o-peer-reviewed-article-CA"
+        },
+        "alt_sorular": [
+          {
+            "id": "ortak-16a",
+            "metin": "Ne zaman oldu ve nasıl tedavi edildi?"
+          },
+          {
+            "id": "ortak-16b",
+            "metin": "Ailenizde pıhtı geçiren var mı?"
+          }
+        ]
+      },
+      {
+        "id": "ortak-13",
+        "metin": "Bağışıklığı baskılayan bir tedavi alıyor musunuz (kortizon, kemoterapi, organ nakli ilaçları, biyolojik ilaçlar gibi)?",
+        "oncelik": "standart",
+        "dogrulanmali": false,
+        "kaynak": {
+          "ad": "StatPearls - Diverticular Disease of the Colon (atypical presentation in immunocompromised)",
+          "url": "https://www.ncbi.nlm.nih.gov/books/NBK541110/"
+        },
+        "alt_sorular": [
+          {
+            "id": "ortak-13a",
+            "metin": "Hangi ilaç, hangi dozda ve ne zamandır?"
+          }
+        ]
+      },
+      {
+        "id": "ortak-14",
+        "metin": "Daha önce kan nakli yapıldı mı ya da kan naklinde bir tepki oldu mu?",
+        "oncelik": "standart",
+        "dogrulanmali": true,
+        "kaynak": {
+          "ad": "Kaynak metni bu araştırmada okunamadı; cerrah tarafından doğrulanmalı",
+          "url": ""
+        },
+        "alt_sorular": [
+          {
+            "id": "ortak-14a",
+            "metin": "Ne zaman ve ne tür bir tepki oldu?"
+          }
+        ]
+      },
+      {
+        "id": "ortak-11",
+        "metin": "Anne, baba, kardeş ya da çocuklarınızda bilinen bir hastalık ya da kanser var mı?",
+        "oncelik": "standart",
+        "dogrulanmali": false,
+        "kaynak": {
+          "ad": "StatPearls - Breast Nipple Discharge (family history of cancers)",
+          "url": "https://www.ncbi.nlm.nih.gov/books/NBK430938/"
+        },
+        "alt_sorular": [
+          {
+            "id": "ortak-11a",
+            "metin": "Hangi hastalık, kimde ve kaç yaşında tanı aldı?"
+          }
+        ]
+      },
+      {
+        "id": "ortak-08",
+        "metin": "Sigara ya da başka bir tütün ürünü kullanıyor musunuz?",
+        "oncelik": "standart",
+        "dogrulanmali": false,
+        "kaynak": {
+          "ad": "StatPearls - Acute Pancreatitis (History: cigarette smoking)",
+          "url": "https://www.ncbi.nlm.nih.gov/books/NBK482468/"
+        },
+        "alt_sorular": [
+          {
+            "id": "ortak-08a",
+            "metin": "Günde kaç adet, kaç yıldır?"
+          },
+          {
+            "id": "ortak-08b",
+            "metin": "Bıraktıysanız ne zaman bıraktınız?"
+          }
+        ]
+      },
+      {
+        "id": "ortak-09",
+        "metin": "Alkol kullanıyor musunuz?",
+        "oncelik": "standart",
+        "dogrulanmali": false,
+        "kaynak": {
+          "ad": "StatPearls - Acute Abdomen (History: alcohol use disorder)",
+          "url": "https://www.ncbi.nlm.nih.gov/books/NBK459328/"
+        },
+        "alt_sorular": [
+          {
+            "id": "ortak-09a",
+            "metin": "Haftada ne kadar ve kaç yıldır içiyorsunuz?"
+          },
+          {
+            "id": "ortak-09b",
+            "metin": "En son ne zaman içtiniz?"
+          },
+          {
+            "id": "ortak-09c",
+            "metin": "Daha önce alkolü bırakınca titreme, terleme ya da huzursuzluk oldu mu?"
+          }
+        ]
+      },
+      {
+        "id": "ortak-10",
+        "metin": "Uyuşturucu ya da reçetesiz uyku/ağrı kesici ilaç kullanıyor musunuz?",
+        "oncelik": "standart",
+        "dogrulanmali": true,
+        "kaynak": {
+          "ad": "Kaynak metni bu araştırmada okunamadı; cerrah tarafından doğrulanmalı",
+          "url": ""
+        },
+        "alt_sorular": [
+          {
+            "id": "ortak-10a",
+            "metin": "Hangi madde, ne sıklıkla, en son ne zaman?"
+          }
+        ]
+      },
+      {
+        "id": "ortak-17",
+        "metin": "Çalışıyor musunuz?",
+        "oncelik": "standart",
+        "dogrulanmali": false,
+        "kaynak": {
+          "ad": "Ehsanullah ve ark. 2015, Tablo 1 (Employment, 16-70 yaş); Bhanot ve ark. 2017, Tablo 1 (Occupation)",
+          "url": "https://www.pubmed.gov/25750727/"
+        },
+        "alt_sorular": [
+          {
+            "id": "ortak-17a",
+            "metin": "Ne iş yapıyorsunuz?"
+          },
+          {
+            "id": "ortak-17b",
+            "metin": "İşiniz ağır kaldırma ya da uzun süre ayakta durma gerektiriyor mu?"
+          }
+        ]
+      },
+      {
+        "id": "ortak-18",
+        "metin": "Günlük işlerinizde (yürüme, giyinme, banyo, tuvalet) birinin yardımına ihtiyacınız oluyor mu?",
+        "oncelik": "standart",
+        "dogrulanmali": false,
+        "kaynak": {
+          "ad": "Ehsanullah ve ark. 2015, Tablo 1 (Activities of daily living, 65 yaş üstü); Chow ve ark. 2014, standart 4 (bağımsız ve hareketli mi)",
+          "url": "https://www.pubmed.gov/25750727/"
+        },
+        "alt_sorular": [
+          {
+            "id": "ortak-18a",
+            "metin": "Hangi işlerde yardım alıyorsunuz?"
+          },
+          {
+            "id": "ortak-18b",
+            "metin": "Yürürken baston, yürüteç ya da tekerlekli sandalye kullanıyor musunuz?"
+          }
+        ]
+      },
+      {
+        "id": "ortak-19",
+        "metin": "Evde size bakan biri ya da aldığınız bir evde bakım hizmeti var mı?",
+        "oncelik": "standart",
+        "dogrulanmali": false,
+        "kaynak": {
+          "ad": "Ehsanullah ve ark. 2015, Tablo 1 (RCSEng ölçütleri: Package of care, 65 yaş üstü)",
+          "url": "https://www.pubmed.gov/25750727/"
+        },
+        "alt_sorular": [
+          {
+            "id": "ortak-19a",
+            "metin": "Evde kiminle yaşıyorsunuz?"
+          },
+          {
+            "id": "ortak-19b",
+            "metin": "Taburcu olduğunuzda size yardım edebilecek biri var mı?"
+          }
+        ],
+        "kosul": "65_ustu"
+      },
+      {
+        "id": "ortak-20",
+        "metin": "Boyunuz ve kilonuz kaç?",
+        "oncelik": "standart",
+        "dogrulanmali": false,
+        "kaynak": {
+          "ad": "Ehsanullah ve ark. 2015, Tablo 1 (Height, Weight); Bhanot ve ark. 2017, Tablo 1",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5440754"
+        },
+        "alt_sorular": [
+          {
+            "id": "ortak-20a",
+            "metin": "Son aylarda istemeden kilo verdiniz mi?"
+          }
+        ],
+        "tip": "acik"
+      },
+      {
+        "id": "ortak-21",
+        "metin": "Sormadığım başka bir şikayetiniz var mı? (sistem sorgusu)",
+        "oncelik": "standart",
+        "dogrulanmali": false,
+        "kaynak": {
+          "ad": "Ehsanullah ve ark. 2015, Tablo 1 (RCSEng ölçütleri: Systems review)",
+          "url": "https://www.pubmed.gov/25750727/"
+        },
+        "alt_sorular": [
+          {
+            "id": "ortak-21a",
+            "metin": "Göğüs ağrısı, çarpıntı ya da nefes darlığı?"
+          },
+          {
+            "id": "ortak-21b",
+            "metin": "Öksürük ya da balgam?"
+          },
+          {
+            "id": "ortak-21c",
+            "metin": "İdrar yaparken yanma ya da zorlanma?"
+          },
+          {
+            "id": "ortak-21d",
+            "metin": "Baş ağrısı, baş dönmesi ya da bayılma?"
+          }
+        ],
+        "tip": "acik"
+      },
+      {
+        "id": "ortak-12",
+        "metin": "Gebe olma ihtimaliniz var mı?",
+        "oncelik": "kritik",
+        "dogrulanmali": false,
+        "kaynak": {
+          "ad": "StatPearls - Acute Abdomen (History: last menstrual period)",
+          "url": "https://www.ncbi.nlm.nih.gov/books/NBK459328/"
+        },
+        "alt_sorular": [
+          {
+            "id": "ortak-12a",
+            "metin": "Son adetinizin ilk günü ne zamandı?"
+          },
+          {
+            "id": "ortak-12b",
+            "metin": "Şu anda emziriyor musunuz?"
+          }
+        ],
+        "kosul": "kadin"
+      },
+      {
+        "id": "ortak-07",
+        "metin": "Son 8 saat içinde bir şey yediniz ya da içtiniz mi?",
+        "oncelik": "kritik",
+        "dogrulanmali": true,
+        "kaynak": {
+          "ad": "Hannan ve ark. 2020 (açlık durumu formda kayıtlı alan; yalnızca alıntıdan görüldü, 8 saat eşiği anestezi kılavuzuyla doğrulanmalı)",
+          "url": "https://doi.org/10.1007/s11845-020-02475-1"
+        },
+        "alt_sorular": [
+          {
+            "id": "ortak-07a",
+            "metin": "En son katı yiyeceği saat kaçta yediniz?"
+          },
+          {
+            "id": "ortak-07b",
+            "metin": "En son su ya da berrak sıvıyı saat kaçta içtiniz?"
+          }
+        ]
+      }
+    ]
+  },
+  "tanilar": [
+    {
+      "id": "akut-apandisit",
+      "ad": "Akut apandisit",
+      "sorular": [
+        {
+          "id": "apandisit-01",
+          "metin": "Ağrı göbek çevresinde başlayıp sonra sağ alt karna mı yerleşti?",
+          "oncelik": "standart",
+          "dogrulanmali": false,
+          "kaynak": {
+            "ad": "StatPearls - Acute Abdomen (acute appendicitis)",
+            "url": "https://www.ncbi.nlm.nih.gov/books/NBK459328/"
+          },
+          "alt_sorular": [
+            {
+              "id": "apandisit-01a",
+              "metin": "Ağrı ne zaman başladı (gün ve saat)?"
+            },
+            {
+              "id": "apandisit-01b",
+              "metin": "Ağrı sürekli mi ve giderek artıyor mu?"
+            }
+          ]
+        },
+        {
+          "id": "apandisit-02",
+          "metin": "Ağrı tüm karnınıza yayıldı mı ya da yürürken, öksürürken veya araç sarsıntısında ağrınız artıyor mu?",
+          "oncelik": "kritik",
+          "dogrulanmali": true,
+          "kaynak": {
+            "ad": "StatPearls - Appendicitis",
+            "url": "https://www.ncbi.nlm.nih.gov/books/NBK493193/"
+          },
+          "alt_sorular": [
+            {
+              "id": "apandisit-02a",
+              "metin": "Ağrı birden azalıp sonra tüm karına mı yayıldı?"
+            }
+          ]
+        },
+        {
+          "id": "apandisit-03",
+          "metin": "Ağrı başlayalı 48 saatten uzun süre geçti mi?",
+          "oncelik": "kritik",
+          "dogrulanmali": true,
+          "kaynak": {
+            "ad": "WSES Jerusalem Guidelines 2020 - Acute Appendicitis (Di Saverio ve ark., World J Emerg Surg 2020)",
+            "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7386163/"
+          },
+          "alt_sorular": []
+        },
+        {
+          "id": "apandisit-04",
+          "metin": "Ağrı başladıktan sonra iştahınız kesildi mi?",
+          "oncelik": "standart",
+          "dogrulanmali": false,
+          "kaynak": {
+            "ad": "StatPearls - Acute Abdomen (anorexia in appendicitis)",
+            "url": "https://www.ncbi.nlm.nih.gov/books/NBK459328/"
+          },
+          "alt_sorular": []
+        },
+        {
+          "id": "apandisit-05",
+          "metin": "Bulantınız ya da kusmanız oldu mu?",
+          "oncelik": "standart",
+          "dogrulanmali": false,
+          "kaynak": {
+            "ad": "StatPearls - Acute Abdomen (nausea, vomiting in appendicitis)",
+            "url": "https://www.ncbi.nlm.nih.gov/books/NBK459328/"
+          },
+          "alt_sorular": [
+            {
+              "id": "apandisit-05a",
+              "metin": "Kusma ağrıdan önce mi, sonra mı başladı?"
+            },
+            {
+              "id": "apandisit-05b",
+              "metin": "Kaç kez kustunuz?"
+            }
+          ]
+        },
+        {
+          "id": "apandisit-06",
+          "metin": "Ateşiniz ya da titremeniz oldu mu?",
+          "oncelik": "standart",
+          "dogrulanmali": false,
+          "kaynak": {
+            "ad": "StatPearls - Acute Abdomen (low-grade fever in appendicitis)",
+            "url": "https://www.ncbi.nlm.nih.gov/books/NBK459328/"
+          },
+          "alt_sorular": [
+            {
+              "id": "apandisit-06a",
+              "metin": "Ateşinizi ölçtünüz mü, kaç dereceydi?"
+            }
+          ]
+        },
+        {
+          "id": "apandisit-07",
+          "metin": "Daha önce apandisit ameliyatı oldunuz mu?",
+          "oncelik": "standart",
+          "dogrulanmali": false,
+          "kaynak": {
+            "ad": "StatPearls - Appendectomy (stump appendicitis)",
+            "url": "https://www.ncbi.nlm.nih.gov/books/NBK580514/"
+          },
+          "alt_sorular": [
+            {
+              "id": "apandisit-07a",
+              "metin": "Ne zaman yapıldı, açık mı kapalı mı?"
+            },
+            {
+              "id": "apandisit-07b",
+              "metin": "O zaman apandisitin patladığı söylendi mi?"
+            }
+          ]
+        },
+        {
+          "id": "apandisit-08",
+          "metin": "Daha önce Crohn hastalığı ya da başka bir iltihabi bağırsak hastalığı tanısı aldınız mı?",
+          "oncelik": "standart",
+          "dogrulanmali": false,
+          "kaynak": {
+            "ad": "StatPearls - Appendicitis (Crohn disease history)",
+            "url": "https://www.ncbi.nlm.nih.gov/books/NBK493193/"
+          },
+          "alt_sorular": []
+        },
+        {
+          "id": "apandisit-09",
+          "metin": "Daha önce buna benzer sağ alt karın ağrısı atakları geçirdiniz mi?",
+          "oncelik": "standart",
+          "dogrulanmali": true,
+          "kaynak": {
+            "ad": "StatPearls - Appendicitis",
+            "url": "https://www.ncbi.nlm.nih.gov/books/NBK493193/"
+          },
+          "alt_sorular": [
+            {
+              "id": "apandisit-09a",
+              "metin": "Ne zaman oldu ve ilaçla mı geçti?"
+            }
+          ]
+        },
+        {
+          "id": "apandisit-10",
+          "metin": "Vajinal akıntı, ilişki sırasında ağrı ya da adet sancısında artış oldu mu?",
+          "oncelik": "standart",
+          "dogrulanmali": false,
+          "kaynak": {
+            "ad": "StatPearls - Acute Abdomen (sexual history, dyspareunia, dysmenorrhea)",
+            "url": "https://www.ncbi.nlm.nih.gov/books/NBK459328/"
+          },
+          "alt_sorular": [],
+          "kosul": "kadin"
+        },
+        {
+          "id": "apandisit-11",
+          "metin": "İdrar yaparken yanma, sık idrara çıkma ya da ishal oldu mu?",
+          "oncelik": "standart",
+          "dogrulanmali": true,
+          "kaynak": {
+            "ad": "StatPearls - Acute Abdomen (differential: urinary tract)",
+            "url": "https://www.ncbi.nlm.nih.gov/books/NBK459328/"
+          },
+          "alt_sorular": []
+        }
+      ]
+    },
+    {
+      "id": "safra-tasi-hastaligi",
+      "ad": "Akut kolesistit / semptomatik kolelitiazis",
+      "sorular": [
+        {
+          "id": "safra-01",
+          "metin": "Ağrınız sağ üst karında ya da mide çukurunda mı?",
+          "oncelik": "standart",
+          "dogrulanmali": false,
+          "kaynak": {
+            "ad": "WSES 2020 Acute Calculus Cholecystitis Guidelines (Pisano ve ark., World J Emerg Surg 2020)",
+            "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7643471/"
+          },
+          "alt_sorular": [
+            {
+              "id": "safra-01a",
+              "metin": "Ağrı ne zaman başladı?"
+            }
+          ]
+        },
+        {
+          "id": "safra-02",
+          "metin": "Ağrı birkaç saat içinde geçmeyip sürekli hale geldi mi?",
+          "oncelik": "standart",
+          "dogrulanmali": false,
+          "kaynak": {
+            "ad": "StatPearls - Gallstones (Cholelithiasis)",
+            "url": "https://www.ncbi.nlm.nih.gov/books/NBK459370/"
+          },
+          "alt_sorular": []
+        },
+        {
+          "id": "safra-03",
+          "metin": "Şikayetleriniz başlayalı 3 günden (72 saat) uzun süre geçti mi?",
+          "oncelik": "kritik",
+          "dogrulanmali": true,
+          "kaynak": {
+            "ad": "Tokyo Guidelines 2018 (TG18) - Acute cholecystitis diagnostic criteria and severity grading (Yokoe ve ark.)",
+            "url": "https://onlinelibrary.wiley.com/doi/full/10.1002/jhbp.515"
+          },
+          "alt_sorular": []
+        },
+        {
+          "id": "safra-04",
+          "metin": "Gözlerinizde ya da cildinizde sararma, idrarınızda koyulaşma ya da dışkınızda açık renk oldu mu?",
+          "oncelik": "kritik",
+          "dogrulanmali": true,
+          "kaynak": {
+            "ad": "Tokyo Guidelines 2018 (TG18)",
+            "url": "https://onlinelibrary.wiley.com/doi/full/10.1002/jhbp.515"
+          },
+          "alt_sorular": [
+            {
+              "id": "safra-04a",
+              "metin": "Sararma ne zaman başladı?"
+            },
+            {
+              "id": "safra-04b",
+              "metin": "Kaşıntı var mı?"
+            }
+          ]
+        },
+        {
+          "id": "safra-05",
+          "metin": "Ateşle birlikte titreme, bilinç bulanıklığı, baş dönmesi ya da bayılma oldu mu?",
+          "oncelik": "kritik",
+          "dogrulanmali": true,
+          "kaynak": {
+            "ad": "Tokyo Guidelines 2018 (TG18) - severity grading",
+            "url": "https://onlinelibrary.wiley.com/doi/full/10.1002/jhbp.515"
+          },
+          "alt_sorular": []
+        },
+        {
+          "id": "safra-06",
+          "metin": "Ateşiniz oldu mu?",
+          "oncelik": "standart",
+          "dogrulanmali": false,
+          "kaynak": {
+            "ad": "WSES 2020 Acute Calculus Cholecystitis Guidelines",
+            "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7643471/"
+          },
+          "alt_sorular": [
+            {
+              "id": "safra-06a",
+              "metin": "Kaç dereceydi, ne zamandır?"
+            }
+          ]
+        },
+        {
+          "id": "safra-07",
+          "metin": "Bulantı, kusma ya da hiçbir şey yiyememe durumu var mı?",
+          "oncelik": "standart",
+          "dogrulanmali": false,
+          "kaynak": {
+            "ad": "WSES 2020 Acute Calculus Cholecystitis Guidelines (vomiting or food intolerance)",
+            "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7643471/"
+          },
+          "alt_sorular": []
+        },
+        {
+          "id": "safra-08",
+          "metin": "Daha önce safra kesenizde taş olduğu söylendi mi?",
+          "oncelik": "standart",
+          "dogrulanmali": false,
+          "kaynak": {
+            "ad": "StatPearls - Gallstones (Cholelithiasis)",
+            "url": "https://www.ncbi.nlm.nih.gov/books/NBK459370/"
+          },
+          "alt_sorular": [
+            {
+              "id": "safra-08a",
+              "metin": "Ne zaman ve hangi tetkikle (ultrason vb.) bulundu?"
+            },
+            {
+              "id": "safra-08b",
+              "metin": "Size daha önce ameliyat önerildi mi?"
+            }
+          ]
+        },
+        {
+          "id": "safra-09",
+          "metin": "Daha önce benzer safra krizi ağrıları yaşadınız mı?",
+          "oncelik": "standart",
+          "dogrulanmali": false,
+          "kaynak": {
+            "ad": "StatPearls - Gallstones (Cholelithiasis)",
+            "url": "https://www.ncbi.nlm.nih.gov/books/NBK459370/"
+          },
+          "alt_sorular": [
+            {
+              "id": "safra-09a",
+              "metin": "Kaç kez oldu, en sonuncusu ne zaman?"
+            },
+            {
+              "id": "safra-09b",
+              "metin": "Bu nedenle acile başvurdunuz ya da yattınız mı?"
+            }
+          ]
+        },
+        {
+          "id": "safra-10",
+          "metin": "Ağrı yağlı ya da ağır bir yemekten sonra mı başladı?",
+          "oncelik": "standart",
+          "dogrulanmali": true,
+          "kaynak": {
+            "ad": "StatPearls - Gallstones (Cholelithiasis)",
+            "url": "https://www.ncbi.nlm.nih.gov/books/NBK459370/"
+          },
+          "alt_sorular": []
+        },
+        {
+          "id": "safra-11",
+          "metin": "Ağrı sağ omzunuza ya da sırtınıza vuruyor mu?",
+          "oncelik": "standart",
+          "dogrulanmali": true,
+          "kaynak": {
+            "ad": "StatPearls - Acute Cholecystitis",
+            "url": "https://www.ncbi.nlm.nih.gov/books/NBK459171/"
+          },
+          "alt_sorular": []
+        },
+        {
+          "id": "safra-12",
+          "metin": "Daha önce safra yolu taşı, safra yolu iltihabı ya da pankreas iltihabı nedeniyle tedavi gördünüz mü?",
+          "oncelik": "standart",
+          "dogrulanmali": true,
+          "kaynak": {
+            "ad": "StatPearls - Gallstones (Cholelithiasis) (complications: cholangitis, pancreatitis)",
+            "url": "https://www.ncbi.nlm.nih.gov/books/NBK459370/"
+          },
+          "alt_sorular": [
+            {
+              "id": "safra-12a",
+              "metin": "Endoskopik işlem (ERCP) yapıldı mı, ne zaman?"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "inguinal-herni",
+      "ad": "İnguinal herni",
+      "sorular": [
+        {
+          "id": "herni-01",
+          "metin": "Kasığınızdaki şişlik son saatlerde sertleşti, çok ağrılı hale geldi ve artık içeri girmiyor mu?",
+          "oncelik": "kritik",
+          "dogrulanmali": false,
+          "kaynak": {
+            "ad": "HerniaSurge Group - International guidelines for groin hernia management (Hernia 2018)",
+            "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5809582/"
+          },
+          "alt_sorular": [
+            {
+              "id": "herni-01a",
+              "metin": "Ne zamandan beri içeri girmiyor?"
+            },
+            {
+              "id": "herni-01b",
+              "metin": "Şişliğin üzerinde kızarıklık ya da morarma var mı?"
+            }
+          ]
+        },
+        {
+          "id": "herni-02",
+          "metin": "Bununla birlikte kusma, karında şişlik ya da gaz-dışkı çıkaramama oldu mu?",
+          "oncelik": "kritik",
+          "dogrulanmali": false,
+          "kaynak": {
+            "ad": "StatPearls - Small Bowel Obstruction (incarcerated hernia as cause)",
+            "url": "https://www.ncbi.nlm.nih.gov/books/NBK448079/"
+          },
+          "alt_sorular": []
+        },
+        {
+          "id": "herni-03",
+          "metin": "Kasığınızda ya da torbada (kadınlarda dış dudak bölgesinde) şişlik var mı?",
+          "oncelik": "standart",
+          "dogrulanmali": false,
+          "kaynak": {
+            "ad": "HerniaSurge Group - International guidelines for groin hernia management (Hernia 2018)",
+            "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5809582/"
+          },
+          "alt_sorular": [
+            {
+              "id": "herni-03a",
+              "metin": "Hangi tarafta, yoksa iki tarafta da mı?"
+            },
+            {
+              "id": "herni-03b",
+              "metin": "Ne zamandır var ve büyüyor mu?"
+            }
+          ]
+        },
+        {
+          "id": "herni-04",
+          "metin": "Şişlik yatınca ya da elinizle bastırınca kayboluyor mu?",
+          "oncelik": "standart",
+          "dogrulanmali": false,
+          "kaynak": {
+            "ad": "HerniaSurge Group - International guidelines for groin hernia management (Hernia 2018)",
+            "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5809582/"
+          },
+          "alt_sorular": []
+        },
+        {
+          "id": "herni-05",
+          "metin": "Kasığınızda ağrı ya da rahatsızlık hissi var mı?",
+          "oncelik": "standart",
+          "dogrulanmali": true,
+          "kaynak": {
+            "ad": "HerniaSurge Group - International guidelines for groin hernia management (Hernia 2018)",
+            "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5809582/"
+          },
+          "alt_sorular": [
+            {
+              "id": "herni-05a",
+              "metin": "Bu ağrı günlük işlerinizi kısıtlıyor mu?"
+            }
+          ]
+        },
+        {
+          "id": "herni-06",
+          "metin": "Aynı tarafta daha önce fıtık ameliyatı oldunuz mu?",
+          "oncelik": "standart",
+          "dogrulanmali": false,
+          "kaynak": {
+            "ad": "StatPearls - Inguinal Hernia (Archived) (hernia recurrence)",
+            "url": "https://www.ncbi.nlm.nih.gov/books/NBK513332/"
+          },
+          "alt_sorular": [
+            {
+              "id": "herni-06a",
+              "metin": "Ne zaman yapıldı ve kaçıncı ameliyattı?"
+            },
+            {
+              "id": "herni-06b",
+              "metin": "Açık mı kapalı mı yapıldı, yama kullanıldı mı?"
+            },
+            {
+              "id": "herni-06c",
+              "metin": "Ameliyattan sonra uzun süren kasık ağrısı oldu mu?"
+            }
+          ]
+        },
+        {
+          "id": "herni-07",
+          "metin": "Ailenizde kasık fıtığı olan var mı?",
+          "oncelik": "standart",
+          "dogrulanmali": false,
+          "kaynak": {
+            "ad": "StatPearls - Inguinal Hernia (Archived) (family history)",
+            "url": "https://www.ncbi.nlm.nih.gov/books/NBK513332/"
+          },
+          "alt_sorular": []
+        },
+        {
+          "id": "herni-08",
+          "metin": "Fıtıkla birlikte idrar yapmada zorluk, iki aşamada idrar yapma, idrarda kan ya da böğür ağrısı oldu mu?",
+          "oncelik": "standart",
+          "dogrulanmali": false,
+          "kaynak": {
+            "ad": "StatPearls - Ureteroinguinal Hernia",
+            "url": "https://www.ncbi.nlm.nih.gov/books/NBK537241/"
+          },
+          "alt_sorular": []
+        },
+        {
+          "id": "herni-09",
+          "metin": "Uzun süredir devam eden öksürük, kabızlık ya da idrar yaparken ıkınma var mı?",
+          "oncelik": "standart",
+          "dogrulanmali": true,
+          "kaynak": {
+            "ad": "StatPearls - Inguinal Hernia (Archived)",
+            "url": "https://www.ncbi.nlm.nih.gov/books/NBK513332/"
+          },
+          "alt_sorular": []
+        },
+        {
+          "id": "herni-10",
+          "metin": "Ağır kaldırmayı gerektiren bir işte çalışıyor musunuz?",
+          "oncelik": "standart",
+          "dogrulanmali": true,
+          "kaynak": {
+            "ad": "HerniaSurge Group - International guidelines for groin hernia management (Hernia 2018)",
+            "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5809582/"
+          },
+          "alt_sorular": []
+        }
+      ]
+    },
+    {
+      "id": "ileus",
+      "ad": "İleus / bağırsak tıkanıklığı",
+      "sorular": [
+        {
+          "id": "ileus-01",
+          "metin": "Son saatlerde gaz ya da dışkı çıkaramadınız mı?",
+          "oncelik": "kritik",
+          "dogrulanmali": false,
+          "kaynak": {
+            "ad": "StatPearls - Small Bowel Obstruction (History and Physical)",
+            "url": "https://www.ncbi.nlm.nih.gov/books/NBK448079/"
+          },
+          "alt_sorular": [
+            {
+              "id": "ileus-01a",
+              "metin": "En son ne zaman gaz çıkardınız?"
+            },
+            {
+              "id": "ileus-01b",
+              "metin": "En son ne zaman dışkıladınız, ishal oldu mu?"
+            }
+          ]
+        },
+        {
+          "id": "ileus-02",
+          "metin": "Karın ağrınız sürekli ve çok şiddetli hale geldi mi?",
+          "oncelik": "kritik",
+          "dogrulanmali": false,
+          "kaynak": {
+            "ad": "StatPearls - Small Bowel Obstruction (Point of Care)",
+            "url": "https://www.statpearls.com/point-of-care/26081"
+          },
+          "alt_sorular": []
+        },
+        {
+          "id": "ileus-03",
+          "metin": "Kasığınızda, göbeğinizde ya da eski ameliyat yerinizde yeni çıkan ağrılı bir şişlik var mı?",
+          "oncelik": "kritik",
+          "dogrulanmali": false,
+          "kaynak": {
+            "ad": "StatPearls - Small Bowel Obstruction (hernia as cause)",
+            "url": "https://www.ncbi.nlm.nih.gov/books/NBK448079/"
+          },
+          "alt_sorular": []
+        },
+        {
+          "id": "ileus-04",
+          "metin": "Ateş, titreme ya da çarpıntınız oldu mu?",
+          "oncelik": "kritik",
+          "dogrulanmali": true,
+          "kaynak": {
+            "ad": "StatPearls - Small Bowel Obstruction (signs of sepsis)",
+            "url": "https://www.ncbi.nlm.nih.gov/books/NBK448079/"
+          },
+          "alt_sorular": []
+        },
+        {
+          "id": "ileus-05",
+          "metin": "Karın ağrınız kramp şeklinde, dalga dalga mı geliyor?",
+          "oncelik": "standart",
+          "dogrulanmali": false,
+          "kaynak": {
+            "ad": "StatPearls - Small Bowel Obstruction (History and Physical)",
+            "url": "https://www.ncbi.nlm.nih.gov/books/NBK448079/"
+          },
+          "alt_sorular": [
+            {
+              "id": "ileus-05a",
+              "metin": "Ağrı ne zaman başladı?"
+            }
+          ]
+        },
+        {
+          "id": "ileus-06",
+          "metin": "Bulantı ya da kusmanız var mı?",
+          "oncelik": "standart",
+          "dogrulanmali": false,
+          "kaynak": {
+            "ad": "StatPearls - Small Bowel Obstruction (History and Physical)",
+            "url": "https://www.ncbi.nlm.nih.gov/books/NBK448079/"
+          },
+          "alt_sorular": [
+            {
+              "id": "ileus-06a",
+              "metin": "Kaç kez kustunuz?"
+            },
+            {
+              "id": "ileus-06b",
+              "metin": "Kusmuğun rengi yeşil mi ya da dışkı gibi mi kokuyor?"
+            }
+          ]
+        },
+        {
+          "id": "ileus-07",
+          "metin": "Karnınızda şişlik var mı?",
+          "oncelik": "standart",
+          "dogrulanmali": false,
+          "kaynak": {
+            "ad": "StatPearls - Small Bowel Obstruction (History and Physical)",
+            "url": "https://www.ncbi.nlm.nih.gov/books/NBK448079/"
+          },
+          "alt_sorular": []
+        },
+        {
+          "id": "ileus-08",
+          "metin": "Daha önce bağırsak tıkanıklığı ya da yapışıklık nedeniyle hastaneye yattınız ya da ameliyat oldunuz mu?",
+          "oncelik": "standart",
+          "dogrulanmali": false,
+          "kaynak": {
+            "ad": "WSES Bologna Guidelines - Adhesive Small Bowel Obstruction, 2017 update (ten Broek ve ark., World J Emerg Surg 2018)",
+            "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6006983/"
+          },
+          "alt_sorular": [
+            {
+              "id": "ileus-08a",
+              "metin": "Kaç kez ve en son ne zaman?"
+            },
+            {
+              "id": "ileus-08b",
+              "metin": "Ameliyatsız mı geçti, ameliyat mı gerekti?"
+            }
+          ]
+        },
+        {
+          "id": "ileus-09",
+          "metin": "Daha önce kanser tanısı aldınız mı ya da karnınıza/leğen kemiği bölgenize ışın tedavisi aldınız mı?",
+          "oncelik": "standart",
+          "dogrulanmali": false,
+          "kaynak": {
+            "ad": "StatPearls - Small Bowel Obstruction (malignancy history)",
+            "url": "https://www.ncbi.nlm.nih.gov/books/NBK448079/"
+          },
+          "alt_sorular": [
+            {
+              "id": "ileus-09a",
+              "metin": "Hangi kanser, ne zaman tanı aldı?"
+            },
+            {
+              "id": "ileus-09b",
+              "metin": "Işın tedavisi ne zaman bitti?"
+            }
+          ]
+        },
+        {
+          "id": "ileus-10",
+          "metin": "Crohn hastalığı ya da başka bir iltihabi bağırsak hastalığınız var mı?",
+          "oncelik": "standart",
+          "dogrulanmali": false,
+          "kaynak": {
+            "ad": "StatPearls - Small Bowel Obstruction (inflammatory bowel disease)",
+            "url": "https://www.ncbi.nlm.nih.gov/books/NBK448079/"
+          },
+          "alt_sorular": []
+        },
+        {
+          "id": "ileus-11",
+          "metin": "Son aylarda dışkılama alışkanlığınızda değişiklik, dışkıda kan ya da istemeden kilo kaybı oldu mu?",
+          "oncelik": "standart",
+          "dogrulanmali": false,
+          "kaynak": {
+            "ad": "StatPearls - Rectal Bleeding (left colon cancer and large bowel obstruction)",
+            "url": "https://www.ncbi.nlm.nih.gov/books/NBK563143/"
+          },
+          "alt_sorular": []
+        },
+        {
+          "id": "ileus-12",
+          "metin": "Son günlerde trabzon hurması gibi çok lifli yiyeceklerden fazla miktarda yediniz mi?",
+          "oncelik": "standart",
+          "dogrulanmali": true,
+          "kaynak": {
+            "ad": "StatPearls - Small Bowel Obstruction (Point of Care: high-risk foods)",
+            "url": "https://www.statpearls.com/point-of-care/26081"
+          },
+          "alt_sorular": []
+        }
+      ]
+    },
+    {
+      "id": "akut-pankreatit",
+      "ad": "Akut pankreatit",
+      "sorular": [
+        {
+          "id": "pankreatit-01",
+          "metin": "Nefes darlığı, idrar miktarında azalma, baş dönmesi ya da bayılma hissi oldu mu?",
+          "oncelik": "kritik",
+          "dogrulanmali": true,
+          "kaynak": {
+            "ad": "WSES 2019 Guidelines for the management of severe acute pancreatitis (Leppäniemi ve ark.)",
+            "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6567462/"
+          },
+          "alt_sorular": []
+        },
+        {
+          "id": "pankreatit-02",
+          "metin": "Gözlerinizde ya da cildinizde sararma, ya da ateşle birlikte titreme oldu mu?",
+          "oncelik": "kritik",
+          "dogrulanmali": true,
+          "kaynak": {
+            "ad": "StatPearls - Acute Pancreatitis (biliary etiology)",
+            "url": "https://www.ncbi.nlm.nih.gov/books/NBK482468/"
+          },
+          "alt_sorular": []
+        },
+        {
+          "id": "pankreatit-03",
+          "metin": "Ağrınız mide çukurunda mı ve sırtınıza vuruyor mu?",
+          "oncelik": "standart",
+          "dogrulanmali": true,
+          "kaynak": {
+            "ad": "StatPearls - Acute Pancreatitis",
+            "url": "https://www.ncbi.nlm.nih.gov/books/NBK482468/"
+          },
+          "alt_sorular": [
+            {
+              "id": "pankreatit-03a",
+              "metin": "Ağrı birden mi başladı, yoksa birkaç günde mi arttı?"
+            },
+            {
+              "id": "pankreatit-03b",
+              "metin": "Ne zaman başladı?"
+            }
+          ]
+        },
+        {
+          "id": "pankreatit-04",
+          "metin": "Bulantı ya da kusmanız var mı?",
+          "oncelik": "standart",
+          "dogrulanmali": true,
+          "kaynak": {
+            "ad": "StatPearls - Acute Pancreatitis",
+            "url": "https://www.ncbi.nlm.nih.gov/books/NBK482468/"
+          },
+          "alt_sorular": []
+        },
+        {
+          "id": "pankreatit-05",
+          "metin": "Daha önce safra kesesinde taş ya da safra krizi tanısı aldınız mı?",
+          "oncelik": "standart",
+          "dogrulanmali": false,
+          "kaynak": {
+            "ad": "StatPearls - Acute Pancreatitis (History: gallbladder disease)",
+            "url": "https://www.ncbi.nlm.nih.gov/books/NBK482468/"
+          },
+          "alt_sorular": [
+            {
+              "id": "pankreatit-05a",
+              "metin": "Safra keseniz alındı mı, ne zaman?"
+            }
+          ]
+        },
+        {
+          "id": "pankreatit-06",
+          "metin": "Ağrı başlamadan önceki günlerde fazla miktarda alkol aldınız mı?",
+          "oncelik": "standart",
+          "dogrulanmali": false,
+          "kaynak": {
+            "ad": "StatPearls - Acute Pancreatitis (History: alcohol consumption)",
+            "url": "https://www.ncbi.nlm.nih.gov/books/NBK482468/"
+          },
+          "alt_sorular": [
+            {
+              "id": "pankreatit-06a",
+              "metin": "5 yıldan uzun süredir düzenli ve yoğun alkol kullanıyor musunuz?"
+            }
+          ]
+        },
+        {
+          "id": "pankreatit-07",
+          "metin": "Daha önce pankreas iltihabı (pankreatit) atağı geçirdiniz mi?",
+          "oncelik": "standart",
+          "dogrulanmali": false,
+          "kaynak": {
+            "ad": "Türk Gastroenteroloji Derneği - Akut Pankreatit Uzlaşı Raporu (Turk J Gastroenterol 2024)",
+            "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11670795/"
+          },
+          "alt_sorular": [
+            {
+              "id": "pankreatit-07a",
+              "metin": "Kaç kez oldu ve nedeni bulundu mu?"
+            }
+          ]
+        },
+        {
+          "id": "pankreatit-08",
+          "metin": "Son haftalarda size endoskopik safra yolu işlemi (ERCP) yapıldı mı?",
+          "oncelik": "standart",
+          "dogrulanmali": false,
+          "kaynak": {
+            "ad": "Türk Gastroenteroloji Derneği - Akut Pankreatit Uzlaşı Raporu (Turk J Gastroenterol 2024)",
+            "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11670795/"
+          },
+          "alt_sorular": [
+            {
+              "id": "pankreatit-08a",
+              "metin": "Ne zaman ve hangi nedenle yapıldı?"
+            }
+          ]
+        },
+        {
+          "id": "pankreatit-09",
+          "metin": "Size ya da ailenizden birine kanda yağ (trigliserit) yüksekliği olduğu söylendi mi?",
+          "oncelik": "standart",
+          "dogrulanmali": false,
+          "kaynak": {
+            "ad": "Türk Gastroenteroloji Derneği - Akut Pankreatit Uzlaşı Raporu (Turk J Gastroenterol 2024)",
+            "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11670795/"
+          },
+          "alt_sorular": []
+        },
+        {
+          "id": "pankreatit-10",
+          "metin": "Son aylarda yeni bir ilaca başladınız mı?",
+          "oncelik": "standart",
+          "dogrulanmali": false,
+          "kaynak": {
+            "ad": "StatPearls - Acute Pancreatitis (medications as a leading cause)",
+            "url": "https://www.ncbi.nlm.nih.gov/books/NBK482468/"
+          },
+          "alt_sorular": [
+            {
+              "id": "pankreatit-10a",
+              "metin": "Hangi ilaç ve ne zaman başladınız?"
+            }
+          ]
+        },
+        {
+          "id": "pankreatit-11",
+          "metin": "Son günlerde karnınıza darbe aldınız mı ya da bir kaza geçirdiniz mi?",
+          "oncelik": "standart",
+          "dogrulanmali": true,
+          "kaynak": {
+            "ad": "Olgu sunumu - An Unusual Case of Isolated Pancreatitis Secondary to Blunt Abdominal Trauma (tek araştırma makalesi)",
+            "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9056755/"
+          },
+          "alt_sorular": []
+        }
+      ]
+    },
+    {
+      "id": "kolorektal-kanser",
+      "ad": "Kolorektal kanser",
+      "sorular": [
+        {
+          "id": "kolorektal-01",
+          "metin": "Son günlerde gaz-dışkı çıkaramama, kusma ya da karnınızda giderek artan şişlik oldu mu?",
+          "oncelik": "kritik",
+          "dogrulanmali": false,
+          "kaynak": {
+            "ad": "StatPearls - Rectal Bleeding (large bowel obstruction in left colon cancer)",
+            "url": "https://www.ncbi.nlm.nih.gov/books/NBK563143/"
+          },
+          "alt_sorular": []
+        },
+        {
+          "id": "kolorektal-02",
+          "metin": "Dışkınızda kan ya da makattan kanama oldu mu?",
+          "oncelik": "standart",
+          "dogrulanmali": false,
+          "kaynak": {
+            "ad": "StatPearls - Rectal Bleeding (History and Physical)",
+            "url": "https://www.ncbi.nlm.nih.gov/books/NBK563143/"
+          },
+          "alt_sorular": [
+            {
+              "id": "kolorektal-02a",
+              "metin": "Kanın rengi parlak kırmızı mı, koyu mu, siyah mı?"
+            },
+            {
+              "id": "kolorektal-02b",
+              "metin": "Kan dışkıyla karışık mı, yoksa üzerinde mi?"
+            },
+            {
+              "id": "kolorektal-02c",
+              "metin": "Ne zamandır oluyor, son günlerde arttı mı?"
+            }
+          ]
+        },
+        {
+          "id": "kolorektal-03",
+          "metin": "Halsizlik, çabuk yorulma, çarpıntı ya da nefes darlığı (kansızlık belirtisi) var mı?",
+          "oncelik": "standart",
+          "dogrulanmali": false,
+          "kaynak": {
+            "ad": "StatPearls - Rectal Bleeding (iron deficiency anemia)",
+            "url": "https://www.ncbi.nlm.nih.gov/books/NBK563143/"
+          },
+          "alt_sorular": [
+            {
+              "id": "kolorektal-03a",
+              "metin": "Kansızlık nedeniyle kan ya da demir tedavisi aldınız mı?"
+            }
+          ]
+        },
+        {
+          "id": "kolorektal-04",
+          "metin": "Son aylarda dışkılama alışkanlığınız değişti mi (kabızlık, ishal ya da ikisi dönüşümlü)?",
+          "oncelik": "standart",
+          "dogrulanmali": false,
+          "kaynak": {
+            "ad": "StatPearls - Rectal Bleeding (altered bowel habits)",
+            "url": "https://www.ncbi.nlm.nih.gov/books/NBK563143/"
+          },
+          "alt_sorular": []
+        },
+        {
+          "id": "kolorektal-05",
+          "metin": "Dışkıladıktan sonra tam boşalamama hissi ya da sık sık tuvalete gitme isteği var mı?",
+          "oncelik": "standart",
+          "dogrulanmali": false,
+          "kaynak": {
+            "ad": "StatPearls - Rectal Bleeding (tenesmus)",
+            "url": "https://www.ncbi.nlm.nih.gov/books/NBK563143/"
+          },
+          "alt_sorular": []
+        },
+        {
+          "id": "kolorektal-06",
+          "metin": "İstemeden kilo kaybettiniz mi?",
+          "oncelik": "standart",
+          "dogrulanmali": false,
+          "kaynak": {
+            "ad": "StatPearls - Rectal Bleeding (weight loss)",
+            "url": "https://www.ncbi.nlm.nih.gov/books/NBK563143/"
+          },
+          "alt_sorular": [
+            {
+              "id": "kolorektal-06a",
+              "metin": "Kaç kilo, kaç ayda?"
+            }
+          ]
+        },
+        {
+          "id": "kolorektal-07",
+          "metin": "Karın ağrınız var mı?",
+          "oncelik": "standart",
+          "dogrulanmali": false,
+          "kaynak": {
+            "ad": "StatPearls - Rectal Bleeding (abdominal pain)",
+            "url": "https://www.ncbi.nlm.nih.gov/books/NBK563143/"
+          },
+          "alt_sorular": []
+        },
+        {
+          "id": "kolorektal-08",
+          "metin": "Daha önce kolonoskopi yapıldı mı?",
+          "oncelik": "standart",
+          "dogrulanmali": false,
+          "kaynak": {
+            "ad": "StatPearls - Rectal Bleeding (previously diagnosed colorectal polyps)",
+            "url": "https://www.ncbi.nlm.nih.gov/books/NBK563143/"
+          },
+          "alt_sorular": [
+            {
+              "id": "kolorektal-08a",
+              "metin": "Ne zaman yapıldı?"
+            },
+            {
+              "id": "kolorektal-08b",
+              "metin": "Polip ya da kanser bulundu mu, biyopsi sonucu ne çıktı?"
+            }
+          ]
+        },
+        {
+          "id": "kolorektal-09",
+          "metin": "Ailenizde kalın bağırsak kanseri ya da bağırsakta çok sayıda polip olan var mı?",
+          "oncelik": "standart",
+          "dogrulanmali": false,
+          "kaynak": {
+            "ad": "StatPearls - Rectal Bleeding (family history of colorectal cancer)",
+            "url": "https://www.ncbi.nlm.nih.gov/books/NBK563143/"
+          },
+          "alt_sorular": [
+            {
+              "id": "kolorektal-09a",
+              "metin": "Kimde ve kaç yaşında tanı aldı?"
+            }
+          ]
+        },
+        {
+          "id": "kolorektal-10",
+          "metin": "Ülseratif kolit ya da Crohn hastalığı tanınız var mı?",
+          "oncelik": "standart",
+          "dogrulanmali": false,
+          "kaynak": {
+            "ad": "StatPearls - Rectal Bleeding (inflammatory bowel disease)",
+            "url": "https://www.ncbi.nlm.nih.gov/books/NBK563143/"
+          },
+          "alt_sorular": []
+        },
+        {
+          "id": "kolorektal-11",
+          "metin": "Karın ya da leğen kemiği bölgenize ışın tedavisi aldınız mı?",
+          "oncelik": "standart",
+          "dogrulanmali": false,
+          "kaynak": {
+            "ad": "StatPearls - Rectal Bleeding (abdominal or pelvic radiation)",
+            "url": "https://www.ncbi.nlm.nih.gov/books/NBK563143/"
+          },
+          "alt_sorular": [
+            {
+              "id": "kolorektal-11a",
+              "metin": "Ne zaman başladı ve ne zaman bitti?"
+            }
+          ]
+        },
+        {
+          "id": "kolorektal-12",
+          "metin": "Bu hastalık için ameliyat öncesi kemoterapi aldınız mı?",
+          "oncelik": "standart",
+          "dogrulanmali": true,
+          "kaynak": {
+            "ad": "Kaynak metni bu araştırmada okunamadı (NCCN/ESMO kolon-rektum kılavuzu ile doğrulanmalı)",
+            "url": ""
+          },
+          "alt_sorular": [
+            {
+              "id": "kolorektal-12a",
+              "metin": "Son kür ne zaman verildi?"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "meme-kanseri",
+      "ad": "Meme kanseri",
+      "sorular": [
+        {
+          "id": "meme-01",
+          "metin": "Memenizde ya da koltuk altınızda elinize gelen bir kitle fark ettiniz mi?",
+          "oncelik": "standart",
+          "dogrulanmali": false,
+          "kaynak": {
+            "ad": "StatPearls - Breast Cancer (History and Physical)",
+            "url": "https://www.ncbi.nlm.nih.gov/books/NBK482286/"
+          },
+          "alt_sorular": [
+            {
+              "id": "meme-01a",
+              "metin": "Hangi tarafta ve ne zamandır?"
+            },
+            {
+              "id": "meme-01b",
+              "metin": "Büyüdü mü, ağrılı mı?"
+            }
+          ]
+        },
+        {
+          "id": "meme-02",
+          "metin": "Meme başınızdan kendiliğinden akıntı geliyor mu?",
+          "oncelik": "standart",
+          "dogrulanmali": false,
+          "kaynak": {
+            "ad": "StatPearls - Breast Nipple Discharge",
+            "url": "https://www.ncbi.nlm.nih.gov/books/NBK430938/"
+          },
+          "alt_sorular": [
+            {
+              "id": "meme-02a",
+              "metin": "Tek memeden mi, iki memeden mi?"
+            },
+            {
+              "id": "meme-02b",
+              "metin": "Akıntı kanlı mı, berrak mı, süt gibi mi?"
+            }
+          ]
+        },
+        {
+          "id": "meme-03",
+          "metin": "Meme cildinizde çekinti, kızarıklık, portakal kabuğu görünümü, yara ya da meme başında içe çekilme fark ettiniz mi?",
+          "oncelik": "standart",
+          "dogrulanmali": false,
+          "kaynak": {
+            "ad": "StatPearls - Breast Cancer (skin changes, peau d'orange, ulceration)",
+            "url": "https://www.ncbi.nlm.nih.gov/books/NBK482286/"
+          },
+          "alt_sorular": [
+            {
+              "id": "meme-03a",
+              "metin": "Ne zaman fark ettiniz?"
+            }
+          ]
+        },
+        {
+          "id": "meme-04",
+          "metin": "Daha önce meme kanseri tanısı aldınız mı ya da memenizden biyopsi yapıldı mı?",
+          "oncelik": "standart",
+          "dogrulanmali": false,
+          "kaynak": {
+            "ad": "StatPearls - Breast Cancer (personal history, histologic abnormalities)",
+            "url": "https://www.ncbi.nlm.nih.gov/books/NBK482286/"
+          },
+          "alt_sorular": [
+            {
+              "id": "meme-04a",
+              "metin": "Hangi memede, ne zaman?"
+            },
+            {
+              "id": "meme-04b",
+              "metin": "Sonuç ne çıktı ve hangi tedaviyi aldınız?"
+            }
+          ]
+        },
+        {
+          "id": "meme-05",
+          "metin": "Ailenizde meme ya da yumurtalık kanseri olan var mı?",
+          "oncelik": "standart",
+          "dogrulanmali": false,
+          "kaynak": {
+            "ad": "StatPearls - Breast Nipple Discharge (family history: breast/ovaries)",
+            "url": "https://www.ncbi.nlm.nih.gov/books/NBK430938/"
+          },
+          "alt_sorular": [
+            {
+              "id": "meme-05a",
+              "metin": "Kimde ve kaç yaşında tanı aldı?"
+            },
+            {
+              "id": "meme-05b",
+              "metin": "Ailede meme kanseri olan bir erkek var mı?"
+            }
+          ]
+        },
+        {
+          "id": "meme-06",
+          "metin": "Size ya da bir yakınınıza BRCA gibi kalıtsal bir gen değişikliği olduğu söylendi mi?",
+          "oncelik": "standart",
+          "dogrulanmali": false,
+          "kaynak": {
+            "ad": "StatPearls - Breast Cancer (BRCA1/BRCA2)",
+            "url": "https://www.ncbi.nlm.nih.gov/books/NBK482286/"
+          },
+          "alt_sorular": []
+        },
+        {
+          "id": "meme-07",
+          "metin": "Menopoza girdiniz mi?",
+          "oncelik": "standart",
+          "dogrulanmali": false,
+          "kaynak": {
+            "ad": "StatPearls - Breast Nipple Discharge (menopausal status)",
+            "url": "https://www.ncbi.nlm.nih.gov/books/NBK430938/"
+          },
+          "alt_sorular": [
+            {
+              "id": "meme-07a",
+              "metin": "Kaç yaşında menopoza girdiniz?"
+            }
+          ]
+        },
+        {
+          "id": "meme-08",
+          "metin": "Doğum kontrol hapı ya da menopoz hormonu kullandınız mı ya da kullanıyor musunuz?",
+          "oncelik": "standart",
+          "dogrulanmali": false,
+          "kaynak": {
+            "ad": "StatPearls - Breast Nipple Discharge (oral contraception, HRT)",
+            "url": "https://www.ncbi.nlm.nih.gov/books/NBK430938/"
+          },
+          "alt_sorular": [
+            {
+              "id": "meme-08a",
+              "metin": "Hangisi ve ne kadar süre?"
+            }
+          ]
+        },
+        {
+          "id": "meme-09",
+          "metin": "Hiç doğum yaptınız ya da emzirdiniz mi?",
+          "oncelik": "standart",
+          "dogrulanmali": false,
+          "kaynak": {
+            "ad": "StatPearls - Breast Nipple Discharge (pregnancies, births, breastfeeding)",
+            "url": "https://www.ncbi.nlm.nih.gov/books/NBK430938/"
+          },
+          "alt_sorular": [
+            {
+              "id": "meme-09a",
+              "metin": "Kaç doğum yaptınız, ilk doğumunuzu kaç yaşında yaptınız?"
+            }
+          ]
+        },
+        {
+          "id": "meme-10",
+          "metin": "Bu tanı için ameliyattan önce kemoterapi, hormon ya da hedefe yönelik ilaç tedavisi aldınız mı?",
+          "oncelik": "standart",
+          "dogrulanmali": true,
+          "kaynak": {
+            "ad": "StatPearls - Breast Cancer",
+            "url": "https://www.ncbi.nlm.nih.gov/books/NBK482286/"
+          },
+          "alt_sorular": [
+            {
+              "id": "meme-10a",
+              "metin": "Tedavi ne zaman bitti?"
+            }
+          ]
+        },
+        {
+          "id": "meme-11",
+          "metin": "Göğüs bölgenize daha önce ışın tedavisi aldınız mı?",
+          "oncelik": "standart",
+          "dogrulanmali": true,
+          "kaynak": {
+            "ad": "StatPearls - Breast Cancer (radiation exposure as risk factor)",
+            "url": "https://www.ncbi.nlm.nih.gov/books/NBK482286/"
+          },
+          "alt_sorular": [
+            {
+              "id": "meme-11a",
+              "metin": "Hangi nedenle ve kaç yaşındayken?"
+            }
+          ]
+        },
+        {
+          "id": "meme-12",
+          "metin": "Yeni başlayan kemik ağrısı, geçmeyen öksürük, nefes darlığı ya da baş ağrısı var mı?",
+          "oncelik": "standart",
+          "dogrulanmali": true,
+          "kaynak": {
+            "ad": "StatPearls - Breast Cancer",
+            "url": "https://www.ncbi.nlm.nih.gov/books/NBK482286/"
+          },
+          "alt_sorular": []
+        }
+      ]
+    },
+    {
+      "id": "tiroid-nodulu-guatr",
+      "ad": "Tiroid nodülü / guatr",
+      "sorular": [
+        {
+          "id": "tiroid-01",
+          "metin": "Nefes almada zorluk, sırt üstü yatınca boğulma hissi ya da hırıltılı soluma var mı?",
+          "oncelik": "kritik",
+          "dogrulanmali": false,
+          "kaynak": {
+            "ad": "StatPearls - Thyroid Cancer (History and Physical: dyspnea)",
+            "url": "https://www.ncbi.nlm.nih.gov/books/NBK459299/"
+          },
+          "alt_sorular": [
+            {
+              "id": "tiroid-01a",
+              "metin": "Ne zamandır var ve kötüleşiyor mu?"
+            }
+          ]
+        },
+        {
+          "id": "tiroid-02",
+          "metin": "Boynunuzdaki şişlik son zamanlarda hızla büyüdü mü?",
+          "oncelik": "standart",
+          "dogrulanmali": false,
+          "kaynak": {
+            "ad": "StatPearls - Thyroid Cancer (sudden increase in nodule size)",
+            "url": "https://www.ncbi.nlm.nih.gov/books/NBK459299/"
+          },
+          "alt_sorular": [
+            {
+              "id": "tiroid-02a",
+              "metin": "Şişlik ne zamandır biliniyor?"
+            },
+            {
+              "id": "tiroid-02b",
+              "metin": "Ne kadar sürede büyüdü?"
+            }
+          ]
+        },
+        {
+          "id": "tiroid-03",
+          "metin": "Sesinizde kısılma ya da değişiklik oldu mu?",
+          "oncelik": "standart",
+          "dogrulanmali": false,
+          "kaynak": {
+            "ad": "StatPearls - Thyroid Cancer (hoarseness)",
+            "url": "https://www.ncbi.nlm.nih.gov/books/NBK459299/"
+          },
+          "alt_sorular": [
+            {
+              "id": "tiroid-03a",
+              "metin": "Ne zamandır var?"
+            }
+          ]
+        },
+        {
+          "id": "tiroid-04",
+          "metin": "Yutmada zorluk ya da boğazda takılma hissi var mı?",
+          "oncelik": "standart",
+          "dogrulanmali": false,
+          "kaynak": {
+            "ad": "StatPearls - Thyroid Cancer (dysphagia)",
+            "url": "https://www.ncbi.nlm.nih.gov/books/NBK459299/"
+          },
+          "alt_sorular": []
+        },
+        {
+          "id": "tiroid-05",
+          "metin": "Çocukken ya da gençken baş-boyun bölgenize ışın tedavisi aldınız mı ya da yüksek radyasyona maruz kaldınız mı?",
+          "oncelik": "standart",
+          "dogrulanmali": false,
+          "kaynak": {
+            "ad": "StatPearls - Thyroid Cancer (childhood head and neck irradiation)",
+            "url": "https://www.ncbi.nlm.nih.gov/books/NBK459299/"
+          },
+          "alt_sorular": [
+            {
+              "id": "tiroid-05a",
+              "metin": "Hangi nedenle ve kaç yaşındayken?"
+            }
+          ]
+        },
+        {
+          "id": "tiroid-06",
+          "metin": "Ailenizde tiroid kanseri olan var mı?",
+          "oncelik": "standart",
+          "dogrulanmali": false,
+          "kaynak": {
+            "ad": "StatPearls - Thyroid Cancer (family history of thyroid cancer)",
+            "url": "https://www.ncbi.nlm.nih.gov/books/NBK459299/"
+          },
+          "alt_sorular": [
+            {
+              "id": "tiroid-06a",
+              "metin": "Kimde ve hangi tür tiroid kanseri?"
+            }
+          ]
+        },
+        {
+          "id": "tiroid-07",
+          "metin": "Sizde ya da ailenizde medüller tiroid kanseri, böbreküstü bezi tümörü ya da paratiroid hastalığı var mı?",
+          "oncelik": "standart",
+          "dogrulanmali": false,
+          "kaynak": {
+            "ad": "StatPearls - Thyroid Nodule (MEN 2 syndrome)",
+            "url": "https://www.ncbi.nlm.nih.gov/books/NBK535422/"
+          },
+          "alt_sorular": []
+        },
+        {
+          "id": "tiroid-08",
+          "metin": "İstemeden kilo kaybı ya da belirgin halsizlik oldu mu?",
+          "oncelik": "standart",
+          "dogrulanmali": false,
+          "kaynak": {
+            "ad": "StatPearls - Thyroid Cancer (weight loss and fatigue)",
+            "url": "https://www.ncbi.nlm.nih.gov/books/NBK459299/"
+          },
+          "alt_sorular": []
+        },
+        {
+          "id": "tiroid-09",
+          "metin": "Çarpıntı, sıcağa dayanamama, ellerde titreme ya da aşırı terleme var mı?",
+          "oncelik": "standart",
+          "dogrulanmali": true,
+          "kaynak": {
+            "ad": "StatPearls - Thyroid Nodule",
+            "url": "https://www.ncbi.nlm.nih.gov/books/NBK535422/"
+          },
+          "alt_sorular": [
+            {
+              "id": "tiroid-09a",
+              "metin": "Size daha önce zehirli guatr ya da tiroid bezi fazla çalışıyor dendi mi?"
+            }
+          ]
+        },
+        {
+          "id": "tiroid-10",
+          "metin": "Üşüme, kabızlık, kilo alma ya da sürekli uyku hali var mı?",
+          "oncelik": "standart",
+          "dogrulanmali": true,
+          "kaynak": {
+            "ad": "StatPearls - Thyroid Nodule",
+            "url": "https://www.ncbi.nlm.nih.gov/books/NBK535422/"
+          },
+          "alt_sorular": []
+        },
+        {
+          "id": "tiroid-11",
+          "metin": "Tiroidinize daha önce iğne biyopsisi yapıldı mı?",
+          "oncelik": "standart",
+          "dogrulanmali": true,
+          "kaynak": {
+            "ad": "2015 ATA Guidelines - Thyroid Nodules and Differentiated Thyroid Cancer (Haugen ve ark., Thyroid 2016)",
+            "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4739132/"
+          },
+          "alt_sorular": [
+            {
+              "id": "tiroid-11a",
+              "metin": "Ne zaman yapıldı ve sonucu ne çıktı?"
+            }
+          ]
+        },
+        {
+          "id": "tiroid-12",
+          "metin": "Daha önce radyoaktif iyot (atom) tedavisi aldınız mı?",
+          "oncelik": "standart",
+          "dogrulanmali": true,
+          "kaynak": {
+            "ad": "2015 ATA Guidelines - Thyroid Nodules and Differentiated Thyroid Cancer",
+            "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4739132/"
+          },
+          "alt_sorular": [
+            {
+              "id": "tiroid-12a",
+              "metin": "Ne zaman ve hangi nedenle?"
+            }
+          ]
+        },
+        {
+          "id": "tiroid-13",
+          "metin": "Daha önce kemik iliği nakli oldunuz mu?",
+          "oncelik": "standart",
+          "dogrulanmali": false,
+          "kaynak": {
+            "ad": "StatPearls - Thyroid Nodule (hematopoietic stem cell transplant)",
+            "url": "https://www.ncbi.nlm.nih.gov/books/NBK535422/"
+          },
+          "alt_sorular": []
+        }
+      ]
+    },
+    {
+      "id": "perianal-apse-fistul",
+      "ad": "Perianal apse / fistül",
+      "sorular": [
+        {
+          "id": "perianal-01",
+          "metin": "Şişliğin çevresindeki kızarıklık hızla yayılıyor mu, ciltte morarma ya da çok kötü bir koku var mı?",
+          "oncelik": "kritik",
+          "dogrulanmali": true,
+          "kaynak": {
+            "ad": "ASCRS 2022 Clinical Practice Guidelines - Anorectal Abscess, Fistula-in-Ano, Rectovaginal Fistula (Gaertner ve ark.)",
+            "url": "https://journals.lww.com/dcrjournal/fulltext/10.1097/dcr.0000000000002473"
+          },
+          "alt_sorular": [
+            {
+              "id": "perianal-01a",
+              "metin": "Bu değişiklik ne zaman başladı?"
+            }
+          ]
+        },
+        {
+          "id": "perianal-02",
+          "metin": "Ateşiniz ya da titremeniz var mı?",
+          "oncelik": "kritik",
+          "dogrulanmali": true,
+          "kaynak": {
+            "ad": "StatPearls - Anorectal Abscess",
+            "url": "https://www.ncbi.nlm.nih.gov/books/NBK459167/"
+          },
+          "alt_sorular": []
+        },
+        {
+          "id": "perianal-03",
+          "metin": "İdrar yapamıyor musunuz ya da idrar yapmakta zorlanıyor musunuz?",
+          "oncelik": "kritik",
+          "dogrulanmali": true,
+          "kaynak": {
+            "ad": "StatPearls - Anorectal Abscess",
+            "url": "https://www.ncbi.nlm.nih.gov/books/NBK459167/"
+          },
+          "alt_sorular": []
+        },
+        {
+          "id": "perianal-04",
+          "metin": "Makat çevresinde ağrılı bir şişlik var mı?",
+          "oncelik": "standart",
+          "dogrulanmali": false,
+          "kaynak": {
+            "ad": "StatPearls - Anorectal Abscess (hallmark symptom: pain)",
+            "url": "https://www.ncbi.nlm.nih.gov/books/NBK459167/"
+          },
+          "alt_sorular": [
+            {
+              "id": "perianal-04a",
+              "metin": "Ne zaman başladı ve büyüyor mu?"
+            },
+            {
+              "id": "perianal-04b",
+              "metin": "Oturunca ya da dışkılarken ağrı artıyor mu?"
+            }
+          ]
+        },
+        {
+          "id": "perianal-05",
+          "metin": "Makat çevresinden ya da makattan kendiliğinden iltihap veya kan geldi mi?",
+          "oncelik": "standart",
+          "dogrulanmali": false,
+          "kaynak": {
+            "ad": "StatPearls - Anorectal Abscess (spontaneous discharge of pus)",
+            "url": "https://www.ncbi.nlm.nih.gov/books/NBK459167/"
+          },
+          "alt_sorular": [
+            {
+              "id": "perianal-05a",
+              "metin": "Akıntı geldikten sonra ağrınız azaldı mı?"
+            }
+          ]
+        },
+        {
+          "id": "perianal-06",
+          "metin": "Makat çevresinde sürekli ya da aralıklı akıntı yapan küçük bir delik var mı?",
+          "oncelik": "standart",
+          "dogrulanmali": false,
+          "kaynak": {
+            "ad": "StatPearls - Anorectal Fistula",
+            "url": "https://www.ncbi.nlm.nih.gov/books/NBK560657/"
+          },
+          "alt_sorular": [
+            {
+              "id": "perianal-06a",
+              "metin": "Ne zamandır var?"
+            }
+          ]
+        },
+        {
+          "id": "perianal-07",
+          "metin": "Daha önce aynı bölgede apse açıldı mı ya da fistül ameliyatı oldunuz mu?",
+          "oncelik": "standart",
+          "dogrulanmali": false,
+          "kaynak": {
+            "ad": "ASCRS 2022 Clinical Practice Guidelines - Anorectal Abscess, Fistula-in-Ano (relevant history)",
+            "url": "https://journals.lww.com/dcrjournal/fulltext/10.1097/dcr.0000000000002473"
+          },
+          "alt_sorular": [
+            {
+              "id": "perianal-07a",
+              "metin": "Kaç kez ve en son ne zaman?"
+            },
+            {
+              "id": "perianal-07b",
+              "metin": "Fistülünüze ip (seton) konuldu mu?"
+            }
+          ]
+        },
+        {
+          "id": "perianal-08",
+          "metin": "Crohn hastalığınız var mı ya da uzun süredir ishal, karın ağrısı ve kilo kaybı yaşıyor musunuz?",
+          "oncelik": "standart",
+          "dogrulanmali": false,
+          "kaynak": {
+            "ad": "StatPearls - Anorectal Abscess (perianal Crohn disease)",
+            "url": "https://www.ncbi.nlm.nih.gov/books/NBK459167/"
+          },
+          "alt_sorular": []
+        },
+        {
+          "id": "perianal-09",
+          "metin": "Gaz ya da dışkıyı tutmakta zorlanıyor musunuz?",
+          "oncelik": "standart",
+          "dogrulanmali": true,
+          "kaynak": {
+            "ad": "ASCRS 2022 Clinical Practice Guidelines - Anorectal Abscess, Fistula-in-Ano",
+            "url": "https://journals.lww.com/dcrjournal/fulltext/10.1097/dcr.0000000000002473"
+          },
+          "alt_sorular": []
+        },
+        {
+          "id": "perianal-10",
+          "metin": "Dışkılarken şiddetli, keskin ağrı ve kâğıtta kan görüyor musunuz?",
+          "oncelik": "standart",
+          "dogrulanmali": true,
+          "kaynak": {
+            "ad": "StatPearls - Anorectal Abscess (differential: anal fissure, hemorrhoids)",
+            "url": "https://www.ncbi.nlm.nih.gov/books/NBK459167/"
+          },
+          "alt_sorular": []
+        },
+        {
+          "id": "perianal-11",
+          "metin": "Daha önce cinsel yolla bulaşan bir enfeksiyon tanısı aldınız mı?",
+          "oncelik": "standart",
+          "dogrulanmali": true,
+          "kaynak": {
+            "ad": "StatPearls - Anorectal Abscess (differential: sexually transmitted infections)",
+            "url": "https://www.ncbi.nlm.nih.gov/books/NBK459167/"
+          },
+          "alt_sorular": []
+        }
+      ]
+    },
+    {
+      "id": "pilonidal-sinus",
+      "ad": "Pilonidal sinüs (kıl dönmesi)",
+      "sorular": [
+        {
+          "id": "pilonidal-01",
+          "metin": "Kuyruk sokumundaki şişlik hızla büyüdü, kızardı ve ateşiniz oldu mu?",
+          "oncelik": "kritik",
+          "dogrulanmali": false,
+          "kaynak": {
+            "ad": "ASCRS 2019 Clinical Practice Guidelines for the Management of Pilonidal Disease (Johnson ve ark.)",
+            "url": "https://cme.lww.com/files/TheAmericanSocietyofColonandRectalSurgeonsClinicalPracticeGuidelinesfortheManagementofPilonidalDisease-1547780571750.pdf"
+          },
+          "alt_sorular": [
+            {
+              "id": "pilonidal-01a",
+              "metin": "Ne zaman başladı?"
+            }
+          ]
+        },
+        {
+          "id": "pilonidal-02",
+          "metin": "Kuyruk sokumunuzda ağrı ya da şişlik var mı?",
+          "oncelik": "standart",
+          "dogrulanmali": false,
+          "kaynak": {
+            "ad": "StatPearls - Pilonidal Cyst and Sinus (History and Physical)",
+            "url": "https://www.ncbi.nlm.nih.gov/books/NBK557770/"
+          },
+          "alt_sorular": [
+            {
+              "id": "pilonidal-02a",
+              "metin": "Ne zamandır var?"
+            },
+            {
+              "id": "pilonidal-02b",
+              "metin": "Oturunca artıyor mu?"
+            }
+          ]
+        },
+        {
+          "id": "pilonidal-03",
+          "metin": "Bu bölgeden iltihaplı ya da kanlı akıntı geliyor mu?",
+          "oncelik": "standart",
+          "dogrulanmali": false,
+          "kaynak": {
+            "ad": "ASCRS 2019 Clinical Practice Guidelines for the Management of Pilonidal Disease",
+            "url": "https://cme.lww.com/files/TheAmericanSocietyofColonandRectalSurgeonsClinicalPracticeGuidelinesfortheManagementofPilonidalDisease-1547780571750.pdf"
+          },
+          "alt_sorular": []
+        },
+        {
+          "id": "pilonidal-04",
+          "metin": "Daha önce bu bölgede apse boşaltıldı mı ya da kıl dönmesi ameliyatı oldunuz mu?",
+          "oncelik": "standart",
+          "dogrulanmali": false,
+          "kaynak": {
+            "ad": "StatPearls - Pilonidal Cyst and Sinus",
+            "url": "https://www.ncbi.nlm.nih.gov/books/NBK557770/"
+          },
+          "alt_sorular": [
+            {
+              "id": "pilonidal-04a",
+              "metin": "Kaç kez ve en son ne zaman?"
+            },
+            {
+              "id": "pilonidal-04b",
+              "metin": "Hangi yöntemle yapıldı (açık bırakma, flep, fenol, lazer vb.)?"
+            },
+            {
+              "id": "pilonidal-04c",
+              "metin": "Yara ne kadar sürede kapandı?"
+            }
+          ]
+        },
+        {
+          "id": "pilonidal-05",
+          "metin": "Ailenizde kıl dönmesi olan var mı?",
+          "oncelik": "standart",
+          "dogrulanmali": false,
+          "kaynak": {
+            "ad": "ASCRS 2019 Clinical Practice Guidelines for the Management of Pilonidal Disease (familial history)",
+            "url": "https://cme.lww.com/files/TheAmericanSocietyofColonandRectalSurgeonsClinicalPracticeGuidelinesfortheManagementofPilonidalDisease-1547780571750.pdf"
+          },
+          "alt_sorular": []
+        },
+        {
+          "id": "pilonidal-06",
+          "metin": "Gün içinde uzun süre oturarak mı çalışıyorsunuz ya da genelde hareketsiz misiniz?",
+          "oncelik": "standart",
+          "dogrulanmali": false,
+          "kaynak": {
+            "ad": "ASCRS 2019 Clinical Practice Guidelines for the Management of Pilonidal Disease (sedentary lifestyle)",
+            "url": "https://cme.lww.com/files/TheAmericanSocietyofColonandRectalSurgeonsClinicalPracticeGuidelinesfortheManagementofPilonidalDisease-1547780571750.pdf"
+          },
+          "alt_sorular": []
+        },
+        {
+          "id": "pilonidal-07",
+          "metin": "Kuyruk sokumu ve sırt bölgenizde yoğun kıllanma var mı?",
+          "oncelik": "standart",
+          "dogrulanmali": false,
+          "kaynak": {
+            "ad": "ASCRS 2019 Clinical Practice Guidelines for the Management of Pilonidal Disease (hirsute body habitus)",
+            "url": "https://cme.lww.com/files/TheAmericanSocietyofColonandRectalSurgeonsClinicalPracticeGuidelinesfortheManagementofPilonidalDisease-1547780571750.pdf"
+          },
+          "alt_sorular": []
+        },
+        {
+          "id": "pilonidal-08",
+          "metin": "Bu bölge sık sık darbe ya da sürtünmeye maruz kalıyor mu?",
+          "oncelik": "standart",
+          "dogrulanmali": false,
+          "kaynak": {
+            "ad": "ASCRS 2019 Clinical Practice Guidelines for the Management of Pilonidal Disease (repetitive trauma or irritation)",
+            "url": "https://cme.lww.com/files/TheAmericanSocietyofColonandRectalSurgeonsClinicalPracticeGuidelinesfortheManagementofPilonidalDisease-1547780571750.pdf"
+          },
+          "alt_sorular": []
+        },
+        {
+          "id": "pilonidal-09",
+          "metin": "Akıntı makata yakın bir delikten mi geliyor ya da dışkılarken bu bölgede ağrı oluyor mu?",
+          "oncelik": "standart",
+          "dogrulanmali": true,
+          "kaynak": {
+            "ad": "StatPearls - Pilonidal Cyst and Sinus (anorectal exam, differential)",
+            "url": "https://www.ncbi.nlm.nih.gov/books/NBK557770/"
+          },
+          "alt_sorular": []
+        }
+      ]
+    }
+  ]
+}
