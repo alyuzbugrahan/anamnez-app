@@ -13,7 +13,7 @@ body {
 main {
   max-width: 380px;
   margin: 0 auto;
-  padding: 0 12px 24px;
+  padding: 0 12px 96px;
 }
 
 h1 {
@@ -40,28 +40,6 @@ button {
   color: #666;
   font-size: 0.85rem;
   overflow-wrap: anywhere;
-}
-
-/* GEÇİCİ: Faz 3'te kaldırılacak */
-.gecici {
-  margin: 12px 0;
-  border: 1px dashed #aaa;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 4px 12px;
-}
-
-.gecici select {
-  font: inherit;
-  min-height: 44px;
-  width: 100%;
-}
-
-.gecici label {
-  min-height: 44px;
-  display: flex;
-  align-items: center;
-  gap: 6px;
 }
 
 .sayac {
@@ -181,4 +159,200 @@ button {
   display: inline-flex;
   align-items: center;
   min-height: 44px;
+}
+
+.ust-cubuk {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-top: 8px;
+}
+
+.ust-cubuk button {
+  border: none;
+  background: none;
+  color: #1d4f91;
+  padding: 0 4px;
+}
+
+.ust-baslik {
+  flex: 1;
+  font-weight: 700;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Sık kullanılan butonlar ekranın altında, tek elle erişim için. */
+.alt-cubuk {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  padding: 12px max(12px, calc((100vw - 380px) / 2 + 12px)) calc(12px + env(safe-area-inset-bottom));
+  background: #fff;
+  border-top: 1px solid #ddd;
+}
+
+.alt-cubuk button,
+.pencere-butonlar button {
+  padding: 0 18px;
+  border: 1px solid #888;
+  border-radius: 8px;
+  background: #f4f4f4;
+}
+
+.alt-cubuk .birincil {
+  flex: 1;
+  background: #1d4f91;
+  border-color: transparent;
+  color: #fff;
+  font-weight: 600;
+}
+
+.alt-cubuk .birincil:disabled {
+  background: #9aaecb;
+}
+
+.hasta-listesi li {
+  display: flex;
+  align-items: stretch;
+  border-bottom: 1px solid #ddd;
+}
+
+.hasta-ac {
+  flex: 1;
+  display: grid;
+  text-align: left;
+  border: none;
+  background: none;
+  padding: 10px 0;
+  color: inherit;
+}
+
+.hasta-etiket {
+  font-weight: 700;
+}
+
+.hasta-tani,
+.hasta-sayac {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.hasta-sil {
+  border: none;
+  background: none;
+  color: #b00020;
+  padding: 0 8px;
+}
+
+.alan {
+  display: grid;
+  gap: 6px;
+  margin: 0 0 18px;
+  padding: 0;
+  border: none;
+  font-weight: 600;
+}
+
+.alan legend {
+  padding: 0;
+  margin-bottom: 6px;
+}
+
+.alan input {
+  font: inherit;
+  font-weight: 400;
+  min-height: 44px;
+  padding: 0 10px;
+  border: 1px solid #888;
+  border-radius: 8px;
+}
+
+.uyari {
+  font-weight: 400;
+  font-size: 0.85rem;
+  color: #b00020;
+}
+
+.kilitli {
+  margin: 0;
+  font-weight: 400;
+  color: #555;
+}
+
+.tani-secim {
+  display: grid;
+  gap: 6px;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.tani-secim button,
+.ikili button {
+  width: 100%;
+  text-align: left;
+  padding: 0 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background: #fff;
+  font-weight: 400;
+}
+
+.ikili {
+  display: flex;
+  gap: 8px;
+}
+
+.ikili button {
+  text-align: center;
+}
+
+.tani-secim button[aria-pressed='true'],
+.ikili button[aria-pressed='true'] {
+  background: #1d4f91;
+  border-color: transparent;
+  color: #fff;
+}
+
+.secim {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.secim input {
+  width: 22px;
+  height: 22px;
+}
+
+.pencere {
+  max-width: 320px;
+  border: none;
+  border-radius: 12px;
+}
+
+.pencere-butonlar {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.pencere-butonlar .tehlikeli {
+  background: #b00020;
+  border-color: transparent;
+  color: #fff;
+}
+
+.kayit-hatasi {
+  background: #fdecee;
+  color: #b00020;
+  padding: 8px;
+  border-radius: 8px;
+  font-size: 0.9rem;
 }

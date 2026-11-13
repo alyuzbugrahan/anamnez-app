@@ -10,14 +10,14 @@ Genel cerrahi asistanının servise yatan hastadan anamnez alırken sorması ger
 
 ## 2. Kapsam dışı (yapılmayacaklar)
 
-- Sunucu, hesap, giriş ekranı, senkronizasyon, analitik, hata raporlama servisi.
+- Sunucu, hesap, giriş ekranı, senkronizasyon, sunucuya gönderilen analitik, hata raporlama servisi. Kullanıcının elle paylaştığı, hasta listesine bağlı olmayan kullanım özeti vardır (Faz 5).
 - Ağ isteği (uygulamanın kendi dosyalarını yüklemek dışında).
 - AI, RAG, serbest soru sorma.
 - Şikayetten giriş (yalnızca tanıdan giriş var).
 - Hasta kimlik bilgisi: isim, TC no, protokol no, doğum tarihi, yakın bilgisi.
 - Cevaplar için metin kutusu. Alt sorular yalnızca hatırlatmadır, veri girilmez.
 - Soru içeriğini (`sorular.json`) uygulama içinden değiştirme. Özel sorular ayrı katmandadır.
-- Dışa aktarma, yazdırma, paylaşma.
+- Dışa aktarma, yazdırma, paylaşma (Faz 5'teki elle paylaşılan kullanım özeti hariç).
 
 ## 3. İçerik verisi: `public/data/sorular.json`
 
@@ -143,12 +143,23 @@ Her faz ayrı oturumda yapılır ve ayrı commit ile biter.
 ### Faz 3 — Hasta listeleri
 
 - Ekran 1, 2 ve 5 (Ayarlar), `localStorage` kaydı, otomatik silme, etiket uyarısı.
+- Ekran geçişleri tarayıcı geçmişine işlenir; Android geri tuşu ve iOS geri kaydırma bir önceki ekrana döner, uygulamayı kapatmaz.
+- Liste silinmeden önce onay penceresi gösterilir.
+- Elle silme ve otomatik silme tek bir fonksiyondan geçer (Faz 5'teki sayaçlar buraya eklenir).
 - Kabul: İki ayrı liste açılabilir, işaretler birbirine karışmaz. Uygulama kapatılıp açılınca işaretler durur. 7 günden eski liste açılışta silinir (testle).
 
 ### Faz 4 — Özel sorular ve offline
 
 - Ekran 4, özel soruların checklist'te gösterimi, PWA kurulumu.
+- Özel soru alanının altında "Hasta bilgisi yazmayın" notu bulunur.
 - Kabul: Eklenen özel soru ilgili bölümün sonunda görünür ve işaretlenebilir. `sorular.json` yeni sürümle değiştirildiğinde özel sorular kaybolmaz. Uygulama ana ekrana eklenir ve uçak modunda açılır.
+
+### Faz 5 — Kullanım özeti
+
+- Liste silinirken (elle ya da otomatik) o listede görünür olan her soru için yerel sayaç güncellenir: gösterildi, evet, hayır, soruldu, boş. Hiç işaret konmamış liste sayılmaz. Sayaçlar hasta listesine bağlı değildir.
+- Ayarlar ekranında "Kullanım özetini paylaş" butonu bulunur. Soru id'leri, sayaçlar, içerik sürümü ve özel soru metinlerini içeren bir JSON dosyası cihazın paylaşım menüsüyle verilir. Ağ isteği yoktur.
+- Paylaşmadan önce dosya içeriği ekranda gösterilir. Özel soru metinleri önizlemede ayrı başlık altında durur ve "Özel soruları dahil etme" seçeneği vardır.
+- Özet hasta listesine bağlı değildir; arayüzde "anonim" yerine "hasta listesine bağlı olmayan" ifadesi kullanılır.
 
 ## 9. Açık konular
 

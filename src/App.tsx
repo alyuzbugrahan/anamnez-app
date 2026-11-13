@@ -1,8 +1,12 @@
 import { useEffect, useState } from 'react'
 import { soruVerisiniYukle } from './data/yukle'
 import type { SoruVerisi } from './data/sema'
+import { Ayarlar } from './screens/Ayarlar'
 import { Checklist } from './screens/Checklist'
-import type { ListeBilgisi } from './store/kurallar'
+import { Hastalar } from './screens/Hastalar'
+import { YeniListe } from './screens/YeniListe'
+import { ayarlariOku, ayarlariYaz, listeleriOku, listeleriYaz } from './store/kayit'
+import { cevapla, eskiListeIdleri, listeleriSil, listeyiDuzenle, yeniListe, type HastaListesi } from './store/listeler'
 
 type Durum =
   | { tur: 'yukleniyor' }
@@ -30,75 +34,122 @@ export default function App() {
     )
   }
 
-  return <GeciciListe veri={durum.veri} />
+  return <Uygulama veri={durum.veri} />
 }
 
-// GEÇİCİ: Faz 3'te Hastalar, Yeni liste ve Ayarlar ekranlarıyla kaldırılacak.
-// Tek liste bellekte tutulur; tanı değişince cevaplar sıfırlanır (SPEC bölüm 8, Faz 2).
-function GeciciListe({ veri }: { veri: SoruVerisi }) {
-  const [liste, setListe] = useState<ListeBilgisi>({
-    taniId: veri.tanilar[0].id,
-    cinsiyet: 'erkek',
-    yas65Ustu: false,
-    cevaplar: {},
-  })
-  const [dogrulanmaliGoster, setDogrulanmaliGoster] = useState(true)
+type Ekran =
+  | { ad: 'hastalar' }
+  | { ad: 'yeni' }
+  | { ad: 'ayarlar' }
+  | { ad: 'checklist'; listeId: string }
+  | { ad: 'duzenle'; listeId: string }
+
+const ANA_EKRAN: Ekran = { ad: 'hastalar' }
+
+function ilkListeler(veri: SoruVerisi): HastaListesi[] {
+  const listeler = listeleriOku(new Set(veri.tanilar.map((t) => t.id)))
+  return listeleriSil(listeler, eskiListeIdleri(listeler))
+}
+
+// Ekranlar tarayıcı geçmişinde tutulur; geri tuşu bir önceki ekrana döner.
+function useEkran() {
+  const [ekran, setEkran] = useState<Ekran>(() => (history.state as Ekran | null) ?? ANA_EKRAN)
+
+  useEffect(() => {
+    if (history.state === null) history.replaceState(ANA_EKRAN, '')
+    const geri = (e: PopStateEvent) => setEkran((e.state as Ekran | null) ?? ANA_EKRAN)
+    window.addEventListener('popstate', geri)
+    return () => window.removeEventListener('popstate', geri)
+  }, [])
+
+  return {
+    ekran,
+    git: (e: Ekran) => {
+      history.pushState(e, '')
+      setEkran(e)
+    },
+    yerineGit: (e: Ekran) => {
+      history.replaceState(e, '')
+      setEkran(e)
+    },
+    geri: () => history.back(),
+  }
+}
+
+function Uygulama({ veri }: { veri: SoruVerisi }) {
+  const [listeler, setListeler] = useState(() => ilkListeler(veri))
+  const [ayarlar, setAyarlar] = useState(ayarlariOku)
+  const [listeKaydedildi, setListeKaydedildi] = useState(true)
+  const [ayarKaydedildi, setAyarKaydedildi] = useState(true)
+  const { ekran, git, yerineGit, geri } = useEkran()
+
+  useEffect(() => setListeKaydedildi(listeleriYaz(listeler)), [listeler])
+  useEffect(() => setAyarKaydedildi(ayarlariYaz(ayarlar)), [ayarlar])
+
+  const listeGuncelle = (id: string, f: (l: HastaListesi) => HastaListesi) =>
+    setListeler((ls) => ls.map((l) => (l.id === id ? f(l) : l)))
+
+  const liste = 'listeId' in ekran ? listeler.find((l) => l.id === ekran.listeId) : undefined
+  // Silinmiş ya da okunamayan listeye ait ekran (ör. sayfa yenilenince) ana ekrana düşer.
+  const gecerliEkran: Ekran = 'listeId' in ekran && !liste ? ANA_EKRAN : ekran
 
   return (
     <main>
-      <fieldset className="gecici">
-        <legend>Geçici seçim</legend>
-        <select
-          aria-label="Tanı"
-          value={liste.taniId}
-          onChange={(e) => setListe({ ...liste, taniId: e.target.value, cevaplar: {} })}
-        >
-          {veri.tanilar.map((t) => <option key={t.id} value={t.id}>{t.ad}</option>)}
-        </select>
-        <label>
-          <input
-            type="radio"
-            name="cinsiyet"
-            checked={liste.cinsiyet === 'kadin'}
-            onChange={() => setListe({ ...liste, cinsiyet: 'kadin' })}
-          />
-          Kadın
-        </label>
-        <label>
-          <input
-            type="radio"
-            name="cinsiyet"
-            checked={liste.cinsiyet === 'erkek'}
-            onChange={() => setListe({ ...liste, cinsiyet: 'erkek' })}
-          />
-          Erkek
-        </label>
-        <label>
-          <input
-            type="checkbox"
-            checked={liste.yas65Ustu}
-            onChange={(e) => setListe({ ...liste, yas65Ustu: e.target.checked })}
-          />
-          65 yaş üstü
-        </label>
-        <label>
-          <input type="checkbox" checked={dogrulanmaliGoster} onChange={(e) => setDogrulanmaliGoster(e.target.checked)} />
-          Doğrulanmalı işaretini göster
-        </label>
-      </fieldset>
-      <Checklist
-        veri={veri}
-        liste={liste}
-        dogrulanmaliGoster={dogrulanmaliGoster}
-        onCevap={(soruId, cevap) =>
-          setListe((l) => {
-            const cevaplar = { ...l.cevaplar }
-            if (cevap === undefined) delete cevaplar[soruId]
-            else cevaplar[soruId] = cevap
-            return { ...l, cevaplar }
-          })
-        }
-      />
+      {!(listeKaydedildi && ayarKaydedildi) && (
+        <p className="kayit-hatasi" role="alert">Kaydedilemedi. Değişiklikler uygulama kapanınca kaybolabilir.</p>
+      )}
+      {gecerliEkran.ad !== 'hastalar' && (
+        <div className="ust-cubuk">
+          <button type="button" onClick={geri}>‹ Geri</button>
+          {gecerliEkran.ad === 'checklist' && liste && (
+            <>
+              <span className="ust-baslik">{liste.etiket}</span>
+              <button type="button" onClick={() => git({ ad: 'duzenle', listeId: liste.id })}>Düzenle</button>
+            </>
+          )}
+        </div>
+      )}
+
+      {gecerliEkran.ad === 'hastalar' && (
+        <Hastalar
+          veri={veri}
+          listeler={listeler}
+          onAc={(id) => git({ ad: 'checklist', listeId: id })}
+          onSil={(id) => setListeler((ls) => listeleriSil(ls, [id]))}
+          onYeni={() => git({ ad: 'yeni' })}
+          onAyarlar={() => git({ ad: 'ayarlar' })}
+        />
+      )}
+      {gecerliEkran.ad === 'yeni' && (
+        <YeniListe
+          veri={veri}
+          onKaydet={(alanlar) => {
+            const yeni = yeniListe(alanlar)
+            setListeler((ls) => [...ls, yeni])
+            // Geri tuşu formu değil Hastalar ekranını açsın.
+            yerineGit({ ad: 'checklist', listeId: yeni.id })
+          }}
+        />
+      )}
+      {gecerliEkran.ad === 'duzenle' && liste && (
+        <YeniListe
+          veri={veri}
+          mevcut={liste}
+          onKaydet={(alanlar) => {
+            listeGuncelle(liste.id, (l) => listeyiDuzenle(l, alanlar))
+            geri()
+          }}
+        />
+      )}
+      {gecerliEkran.ad === 'checklist' && liste && (
+        <Checklist
+          veri={veri}
+          liste={liste}
+          dogrulanmaliGoster={ayarlar.dogrulanmaliGoster}
+          onCevap={(soruId, cevap) => listeGuncelle(liste.id, (l) => cevapla(l, soruId, cevap))}
+        />
+      )}
+      {gecerliEkran.ad === 'ayarlar' && <Ayarlar ayarlar={ayarlar} onDegis={setAyarlar} />}
     </main>
   )
 }

@@ -11,7 +11,7 @@ Genel cerrahi asistanı için telefonda çalışan anamnez kontrol listesi (PWA)
 
 ## Değişmez kurallar
 
-- Sunucu, hesap, analitik, hata raporlama servisi ve üçüncü taraf ağ isteği yok. Veri telefondan çıkmaz.
+- Sunucu, hesap, sunucuya gönderilen analitik, hata raporlama servisi ve üçüncü taraf ağ isteği yok. Kullanıcının elle paylaştığı kullanım özeti dışında veri telefondan çıkmaz.
 - Hasta kimlik bilgisi için alan yok. Cevaplar için metin kutusu yok.
 - `public/data/sorular.json` içeriğine dokunma. Soru ekleme, silme, sıralama ve metin düzeltme yapma.
 - `docs/SPEC.md` bölüm 2'deki kapsam dışı maddeleri ekleme.
