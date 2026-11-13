@@ -88,7 +88,10 @@ interface OzelSoru {
 
 - Saklama: `localStorage`. Okuma ve yazma `try/catch` içinde; hata olursa uygulama bellekteki veriyle çalışmaya devam eder.
 - Otomatik silme: `olusturma` üzerinden 7 gün geçen listeler uygulama açılışında silinir. Süre tek bir sabitte tutulur.
-- Özel sorular silinmez, yalnızca kullanıcı siler.
+- Özel sorular silinmez, yalnızca kullanıcı siler. Ayrı anahtarda saklanır (`anamnez.ozelSorular.v1`). Metin en fazla 120 karakterdir, boş olamaz.
+- Hedef tanısı yeni `sorular.json`'da bulunmayan özel soru saklanmaya devam eder; checklist'te görünmez, "Soruları düzenle" ekranında "Tanısı artık listede olmayan sorular" başlığı altında gösterilir ve oradan silinebilir.
+- Silinen özel sorunun açık listelerdeki cevabı listeden temizlenmez, yok sayılır: gösterilmez, sayaca girmez.
+- Liste ve özel soru id'leri `crypto` olmadan (zaman + `Math.random`) üretilir; güvenli olmayan bağlantıda (ör. `http://192.168.x.x`) da çalışır.
 
 ## 5. Davranış kuralları
 
@@ -99,7 +102,7 @@ interface OzelSoru {
 5. **Kritik rozeti:** `oncelik: "kritik"` olan sorunun yanında belirgin bir rozet görünür.
 6. **Doğrulanmalı işareti:** `dogrulanmali: true` olan sorunun yanında soluk bir işaret görünür. Ayarlar ekranından kapatılabilir (bölüm 6).
 7. **Sayaç:** Checklist ekranının üstünde "X soru sorulmadı" yazar. Sorulmamış kritik soru varsa sayısı ayrıca gösterilir. Yalnızca görünür sorular sayılır.
-8. **Bölümler:** Checklist iki bölümdür: önce "Ortak", sonra tanının adı. Her bölüm katlanabilir. Özel sorular ilgili bölümün sonunda görünür ve evet/hayır sorusu gibi davranır.
+8. **Bölümler:** Checklist iki bölümdür: önce "Ortak", sonra tanının adı. Her bölüm katlanabilir. Özel sorular ilgili bölümün sonunda görünür ve evet/hayır sorusu gibi davranır: öncelik standart, doğrulanmalı değil, alt sorusu yok, sayaca girer. Uzun basınca kaynak olarak "Özel soru" yazar.
 9. **Kaynak:** Soruya uzun basınca kaynak adı ve varsa bağlantısı gösterilir.
 10. **Etiket uyarısı:** Etiket alanının altında "Hasta adı yazmayın" notu bulunur.
 11. **Liste düzenleme ve cevapların korunması:**
@@ -112,15 +115,18 @@ interface OzelSoru {
 1. **Hastalar (ana ekran):** Açık listeler; her satırda etiket, tanı adı ve sorulmamış soru sayısı. "Yeni liste" butonu. Listeyi sola kaydırınca ya da menüden "Sil".
 2. **Yeni liste:** Etiket, tanı seçimi (aranabilir liste), cinsiyet, 65 yaş üstü işareti.
 3. **Checklist:** Bölüm 5'teki kurallar.
-4. **Soruları düzenle:** Hedef seçimi (ortak ya da tanı), özel soru ekleme ve silme. Hazır sorular burada yalnızca okunur.
-5. **Ayarlar:** Hastalar ekranından açılır. "Doğrulanmalı işaretini göster" tercihi burada durur ve `localStorage`'da saklanır.
+4. **Soruları düzenle:** Hastalar ekranındaki "Soruları düzenle" butonuyla açılır. Hedef seçimi (ortak ya da tanı), özel soru ekleme ve silme (silmeden önce onay). Hazır sorular burada yalnızca okunur. Metin alanının altında "Hasta bilgisi yazmayın" notu bulunur.
+5. **Ayarlar:** Hastalar ekranından açılır. "Doğrulanmalı işaretini göster" tercihi burada durur ve `localStorage`'da saklanır. İçerik sürümü (`sorular.json` içindeki `surum` ve `guncelleme`) yazar. Uygulama ana ekrandan değil tarayıcı sekmesinde açıldıysa "Verilerin korunması için ana ekrana ekleyin" notu görünür. "Güncellemeleri denetle" butonu bulunur (bölüm 7).
 
 Arayüz dili Türkçe. Tasarım 380 piksel genişliğe göre yapılır; dokunma hedefleri en az 44 piksel.
 
 ## 7. Teknik
 
 - React, TypeScript, Vite.
-- PWA: `vite-plugin-pwa`. Uygulama dosyaları ve `sorular.json` önbelleğe alınır.
+- PWA: `vite-plugin-pwa`. Uygulama dosyaları ve `sorular.json` önbelleğe alınır. Manifest ve service worker yolları Vite `base` ayarından gelir; uygulama alt klasörden yayınlanabilir (`vite build --base=/alt/`).
+- Güncelleme: yeni sürüm yayınlanınca service worker kendiliğinden kurulur ve devreye girer, ama açık sayfa yeniden yüklenmez; yeni sürüm bir sonraki açılışta görünür. Kullanıcıdan işlem istenmez.
+- iOS'ta ana ekrandaki uygulama günlerce kapanmadan kalabildiği için Ayarlar'da "Güncellemeleri denetle" butonu vardır: service worker güncellemesini denetler; yeni sürüm varsa sayfayı yeniden yükler, yoksa "Güncel" yazar. Çevrimdışıyken denetlenemediğini anlaşılır biçimde söyler.
+- Uygulama simgesi bağımlılıksız bir betikle (`scripts/simge.mjs`) üretilir.
 - Test: Vitest. Görünürlük, sayaç, durum geçişleri ve otomatik silme mantığı testle doğrulanır.
 - Bölüm 5'teki kurallar arayüz bileşenlerinden ayrı, saf fonksiyonlarda yazılır.
 

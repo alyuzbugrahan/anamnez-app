@@ -4,8 +4,10 @@ import type { SoruVerisi } from './data/sema'
 import { Ayarlar } from './screens/Ayarlar'
 import { Checklist } from './screens/Checklist'
 import { Hastalar } from './screens/Hastalar'
+import { SorulariDuzenle } from './screens/SorulariDuzenle'
 import { YeniListe } from './screens/YeniListe'
-import { ayarlariOku, ayarlariYaz, listeleriOku, listeleriYaz } from './store/kayit'
+import { ayarlariOku, ayarlariYaz, listeleriOku, listeleriYaz, ozelSorulariOku, ozelSorulariYaz } from './store/kayit'
+import { ozelSoruEkle, ozelSoruSil } from './store/ozelSorular'
 import { cevapla, eskiListeIdleri, listeleriSil, listeyiDuzenle, yeniListe, type HastaListesi } from './store/listeler'
 
 type Durum =
@@ -41,6 +43,7 @@ type Ekran =
   | { ad: 'hastalar' }
   | { ad: 'yeni' }
   | { ad: 'ayarlar' }
+  | { ad: 'sorular' }
   | { ad: 'checklist'; listeId: string }
   | { ad: 'duzenle'; listeId: string }
 
@@ -79,12 +82,15 @@ function useEkran() {
 function Uygulama({ veri }: { veri: SoruVerisi }) {
   const [listeler, setListeler] = useState(() => ilkListeler(veri))
   const [ayarlar, setAyarlar] = useState(ayarlariOku)
+  const [ozelSorular, setOzelSorular] = useState(ozelSorulariOku)
   const [listeKaydedildi, setListeKaydedildi] = useState(true)
   const [ayarKaydedildi, setAyarKaydedildi] = useState(true)
+  const [ozelKaydedildi, setOzelKaydedildi] = useState(true)
   const { ekran, git, yerineGit, geri } = useEkran()
 
   useEffect(() => setListeKaydedildi(listeleriYaz(listeler)), [listeler])
   useEffect(() => setAyarKaydedildi(ayarlariYaz(ayarlar)), [ayarlar])
+  useEffect(() => setOzelKaydedildi(ozelSorulariYaz(ozelSorular)), [ozelSorular])
 
   const listeGuncelle = (id: string, f: (l: HastaListesi) => HastaListesi) =>
     setListeler((ls) => ls.map((l) => (l.id === id ? f(l) : l)))
@@ -95,7 +101,7 @@ function Uygulama({ veri }: { veri: SoruVerisi }) {
 
   return (
     <main>
-      {!(listeKaydedildi && ayarKaydedildi) && (
+      {!(listeKaydedildi && ayarKaydedildi && ozelKaydedildi) && (
         <p className="kayit-hatasi" role="alert">Kaydedilemedi. Değişiklikler uygulama kapanınca kaybolabilir.</p>
       )}
       {gecerliEkran.ad !== 'hastalar' && (
@@ -114,10 +120,12 @@ function Uygulama({ veri }: { veri: SoruVerisi }) {
         <Hastalar
           veri={veri}
           listeler={listeler}
+          ozelSorular={ozelSorular}
           onAc={(id) => git({ ad: 'checklist', listeId: id })}
           onSil={(id) => setListeler((ls) => listeleriSil(ls, [id]))}
           onYeni={() => git({ ad: 'yeni' })}
           onAyarlar={() => git({ ad: 'ayarlar' })}
+          onSorular={() => git({ ad: 'sorular' })}
         />
       )}
       {gecerliEkran.ad === 'yeni' && (
@@ -145,11 +153,20 @@ function Uygulama({ veri }: { veri: SoruVerisi }) {
         <Checklist
           veri={veri}
           liste={liste}
+          ozelSorular={ozelSorular}
           dogrulanmaliGoster={ayarlar.dogrulanmaliGoster}
           onCevap={(soruId, cevap) => listeGuncelle(liste.id, (l) => cevapla(l, soruId, cevap))}
         />
       )}
-      {gecerliEkran.ad === 'ayarlar' && <Ayarlar ayarlar={ayarlar} onDegis={setAyarlar} />}
+      {gecerliEkran.ad === 'ayarlar' && <Ayarlar veri={veri} ayarlar={ayarlar} onDegis={setAyarlar} />}
+      {gecerliEkran.ad === 'sorular' && (
+        <SorulariDuzenle
+          veri={veri}
+          ozelSorular={ozelSorular}
+          onEkle={(hedef, metin) => setOzelSorular((o) => ozelSoruEkle(o, hedef, metin))}
+          onSil={(id) => setOzelSorular((o) => ozelSoruSil(o, id))}
+        />
+      )}
     </main>
   )
 }

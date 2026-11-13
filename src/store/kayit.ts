@@ -1,8 +1,10 @@
 // localStorage'a erişen tek modül. Okunamayan kayıt yok sayılır, hata uygulamayı durdurmaz.
 import type { HastaListesi } from './listeler'
+import { ozelMetinGecerliMi, type OzelSoru } from './ozelSorular'
 
 const LISTELER = 'anamnez.listeler.v1'
 const AYARLAR = 'anamnez.ayarlar.v1'
+const OZEL_SORULAR = 'anamnez.ozelSorular.v1'
 
 export interface Ayarlar {
   dogrulanmaliGoster: boolean
@@ -66,4 +68,25 @@ export function ayarlariOku(): Ayarlar {
 
 export function ayarlariYaz(ayarlar: Ayarlar): boolean {
   return yaz(AYARLAR, ayarlar)
+}
+
+function ozelSoruGecerliMi(v: unknown): v is OzelSoru {
+  if (typeof v !== 'object' || v === null) return false
+  const o = v as Record<string, unknown>
+  return (
+    typeof o.id === 'string' && o.id.startsWith('ozel-') &&
+    typeof o.hedef === 'string' && o.hedef !== '' &&
+    typeof o.metin === 'string' && ozelMetinGecerliMi(o.metin)
+  )
+}
+
+// Tanı id'sine göre süzülmez: sorular.json değişse de özel sorular kaybolmaz.
+export function ozelSorulariOku(): OzelSoru[] {
+  const v = oku(OZEL_SORULAR)
+  if (!Array.isArray(v)) return []
+  return v.filter(ozelSoruGecerliMi)
+}
+
+export function ozelSorulariYaz(sorular: OzelSoru[]): boolean {
+  return yaz(OZEL_SORULAR, sorular)
 }

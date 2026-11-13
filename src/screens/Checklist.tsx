@@ -3,15 +3,17 @@ import { Sayac } from '../components/Sayac'
 import { SoruSatiri } from '../components/SoruSatiri'
 import type { Soru, SoruVerisi } from '../data/sema'
 import { bolumler, gorunurMu, sayac, sonrakiCevap, type Cevap, type ListeBilgisi } from '../store/kurallar'
+import type { OzelSoru } from '../store/ozelSorular'
 
 interface Props {
   veri: SoruVerisi
   liste: ListeBilgisi
+  ozelSorular: OzelSoru[]
   dogrulanmaliGoster: boolean
   onCevap: (soruId: string, cevap: Cevap | undefined) => void
 }
 
-export function Checklist({ veri, liste, dogrulanmaliGoster, onCevap }: Props) {
+export function Checklist({ veri, liste, ozelSorular, dogrulanmaliGoster, onCevap }: Props) {
   const pencere = useRef<HTMLDialogElement>(null)
   const [kaynakSoru, setKaynakSoru] = useState<Soru | null>(null)
 
@@ -22,8 +24,8 @@ export function Checklist({ veri, liste, dogrulanmaliGoster, onCevap }: Props) {
 
   return (
     <>
-      <Sayac {...sayac(veri, liste)} />
-      {bolumler(veri, liste.taniId).map((b) => (
+      <Sayac {...sayac(veri, liste, ozelSorular)} />
+      {bolumler(veri, liste.taniId, ozelSorular).map((b) => (
         <details key={b.baslik} open className="bolum">
           <summary>{b.baslik}</summary>
           <ul>

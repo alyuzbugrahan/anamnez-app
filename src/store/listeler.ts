@@ -14,6 +14,11 @@ export type ListeAlanlari = Pick<HastaListesi, 'etiket' | 'taniId' | 'cinsiyet' 
 // Kural 11: tanı oluşturulduktan sonra değiştirilemez.
 export type DuzenlenebilirAlanlar = Omit<ListeAlanlari, 'taniId'>
 
+// crypto.randomUUID güvenli olmayan bağlantıda (http://192.168.x.x) yok; bu yüzden zaman + Math.random.
+export function idUret(simdi = new Date()): string {
+  return `${simdi.getTime().toString(36)}-${Math.random().toString(36).slice(2, 10)}`
+}
+
 export function etiketGecerliMi(etiket: string): boolean {
   const e = etiket.trim()
   return e.length > 0 && e.length <= ETIKET_EN_FAZLA
@@ -23,7 +28,7 @@ export function yeniListe(alanlar: ListeAlanlari, simdi = new Date()): HastaList
   return {
     ...alanlar,
     etiket: alanlar.etiket.trim(),
-    id: `${simdi.getTime().toString(36)}-${Math.random().toString(36).slice(2, 8)}`,
+    id: idUret(simdi),
     olusturma: simdi.toISOString(),
     cevaplar: {},
   }

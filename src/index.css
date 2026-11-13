@@ -356,3 +356,54 @@ button {
   border-radius: 8px;
   font-size: 0.9rem;
 }
+
+/* Hastalar: üst satırda Ayarlar ve Soruları düzenle, en altta tam genişlik Yeni liste. */
+.alt-cubuk.iki-satir {
+  flex-wrap: wrap;
+}
+
+.alt-cubuk.iki-satir button:not(.birincil) {
+  flex: 1;
+}
+
+.alt-cubuk.iki-satir .birincil {
+  flex-basis: 100%;
+}
+
+main:has(.iki-satir) {
+  padding-bottom: 152px;
+}
+
+h2 {
+  font-size: 1.05rem;
+  margin: 20px 0 8px;
+}
+
+.alan select {
+  font: inherit;
+  font-weight: 400;
+  min-height: 44px;
+  padding: 0 10px;
+  border: 1px solid #888;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.ozel-liste li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  border-bottom: 1px solid #ddd;
+}
+
+.ozel-liste span {
+  flex: 1;
+  overflow-wrap: anywhere;
+}
+
+.hazir-liste li {
+  padding: 8px 0;
+  border-bottom: 1px solid #eee;
+  color: #555;
+}

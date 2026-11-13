@@ -1,5 +1,6 @@
 // docs/SPEC.md bölüm 5'teki kurallar. Bileşenler bu fonksiyonları çağırır.
 import type { Soru, SoruVerisi } from '../data/sema'
+import { soruyaCevir, type OzelSoru } from './ozelSorular'
 
 export type Cevap = 'evet' | 'hayir' | 'soruldu'
 export type Buton = Cevap
@@ -31,20 +32,20 @@ export function altSorularAcikMi(cevap: Cevap | undefined): boolean {
   return cevap === 'evet' || cevap === 'soruldu'
 }
 
-export function bolumler(veri: SoruVerisi, taniId: string): { baslik: string; sorular: Soru[] }[] {
+// Kural 8: özel sorular ilgili bölümün sonunda. Silinmiş özel sorunun cevabı burada olmadığı için yok sayılır.
+export function bolumler(veri: SoruVerisi, taniId: string, ozel: OzelSoru[] = []): { baslik: string; sorular: Soru[] }[] {
+  const ozelleri = (hedef: string) => ozel.filter((o) => o.hedef === hedef).map(soruyaCevir)
+  const ortak = { baslik: 'Ortak', sorular: [...veri.ortak.sorular, ...ozelleri('ortak')] }
   const tani = veri.tanilar.find((t) => t.id === taniId)
-  if (!tani) return [{ baslik: 'Ortak', sorular: veri.ortak.sorular }]
-  return [
-    { baslik: 'Ortak', sorular: veri.ortak.sorular },
-    { baslik: tani.ad, sorular: tani.sorular },
-  ]
+  if (!tani) return [ortak]
+  return [ortak, { baslik: tani.ad, sorular: [...tani.sorular, ...ozelleri(tani.id)] }]
 }
 
 // Kural 7 ve 11: yalnızca görünür sorular sayılır; gizli sorunun saklı cevabı sayılmaz.
-export function sayac(veri: SoruVerisi, liste: ListeBilgisi): { sorulmadi: number; kritik: number } {
+export function sayac(veri: SoruVerisi, liste: ListeBilgisi, ozel: OzelSoru[] = []): { sorulmadi: number; kritik: number } {
   let sorulmadi = 0
   let kritik = 0
-  for (const b of bolumler(veri, liste.taniId)) {
+  for (const b of bolumler(veri, liste.taniId, ozel)) {
     for (const s of b.sorular) {
       if (!gorunurMu(s, liste) || liste.cevaplar[s.id] !== undefined) continue
       sorulmadi++
