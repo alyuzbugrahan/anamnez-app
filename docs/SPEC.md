@@ -61,6 +61,8 @@ Doğrulama:
 
 - Bilinmeyen üst düzey alanlar ve soru içindeki bilinmeyen alanlar görmezden gelinir.
 - Soru id'leri ve alt soru id'leri birlikte, dosyanın tamamında benzersiz olmalıdır.
+- `tanilar` en az bir tanı içermelidir.
+- Tanı id'leri kendi aralarında benzersiz olmalıdır.
 
 ## 4. Yerel veri (telefonda saklanan)
 
@@ -95,11 +97,15 @@ interface OzelSoru {
 3. **Açık soru (`tip: "acik"`):** İki durum vardır: sorulmadı, soruldu. Tek bir "Soruldu" butonu bulunur.
 4. **Alt sorular:** Ana soru "evet" ya da "soruldu" olduğunda altında liste olarak açılır. İşaretlenmez, veri girilmez.
 5. **Kritik rozeti:** `oncelik: "kritik"` olan sorunun yanında belirgin bir rozet görünür.
-6. **Doğrulanmalı işareti:** `dogrulanmali: true` olan sorunun yanında soluk bir işaret görünür. Ayarlardan kapatılabilir.
+6. **Doğrulanmalı işareti:** `dogrulanmali: true` olan sorunun yanında soluk bir işaret görünür. Ayarlar ekranından kapatılabilir (bölüm 6).
 7. **Sayaç:** Checklist ekranının üstünde "X soru sorulmadı" yazar. Sorulmamış kritik soru varsa sayısı ayrıca gösterilir. Yalnızca görünür sorular sayılır.
 8. **Bölümler:** Checklist iki bölümdür: önce "Ortak", sonra tanının adı. Her bölüm katlanabilir. Özel sorular ilgili bölümün sonunda görünür ve evet/hayır sorusu gibi davranır.
 9. **Kaynak:** Soruya uzun basınca kaynak adı ve varsa bağlantısı gösterilir.
 10. **Etiket uyarısı:** Etiket alanının altında "Hasta adı yazmayın" notu bulunur.
+11. **Liste düzenleme ve cevapların korunması:**
+    - Bir listenin tanısı oluşturulduktan sonra değiştirilemez. Etiket, cinsiyet ve 65 yaş üstü düzenlenebilir.
+    - Cinsiyet ya da 65 yaş üstü değişince cevaplar korunur.
+    - Gizlenen sorunun cevabı saklanır ama sayaca girmez.
 
 ## 6. Ekranlar
 
@@ -107,6 +113,7 @@ interface OzelSoru {
 2. **Yeni liste:** Etiket, tanı seçimi (aranabilir liste), cinsiyet, 65 yaş üstü işareti.
 3. **Checklist:** Bölüm 5'teki kurallar.
 4. **Soruları düzenle:** Hedef seçimi (ortak ya da tanı), özel soru ekleme ve silme. Hazır sorular burada yalnızca okunur.
+5. **Ayarlar:** Hastalar ekranından açılır. "Doğrulanmalı işaretini göster" tercihi burada durur ve `localStorage`'da saklanır.
 
 Arayüz dili Türkçe. Tasarım 380 piksel genişliğe göre yapılır; dokunma hedefleri en az 44 piksel.
 
@@ -129,11 +136,13 @@ Her faz ayrı oturumda yapılır ve ayrı commit ile biter.
 ### Faz 2 — Checklist
 
 - Bölüm 5'teki 1-9 arası kurallar, geçici (bellekte) tek bir listeyle.
+- Tanı, cinsiyet ve 65 yaş üstü geçici bir kontrolle seçilir; Faz 3'te kaldırılır. Bu kontrolde tanı değişince cevaplar sıfırlanır. Bu sıfırlama yalnızca bu fazdaki geçici kontrol için geçerlidir (kalıcı listelerde tanı değiştirilemez, kural 11).
+- "Doğrulanmalı işaretini göster" tercihi bu fazda geçici kontrolde, bellekte tutulur.
 - Kabul: Bir tanı seçilince ortak ve tanı soruları sırayla görünür. "Evet" basılınca alt sorular açılır. Erkek hastada "kadin" koşullu sorular görünmez. Sayaç doğru günceller. Kural testleri geçer.
 
 ### Faz 3 — Hasta listeleri
 
-- Ekran 1 ve 2, `localStorage` kaydı, otomatik silme, etiket uyarısı.
+- Ekran 1, 2 ve 5 (Ayarlar), `localStorage` kaydı, otomatik silme, etiket uyarısı.
 - Kabul: İki ayrı liste açılabilir, işaretler birbirine karışmaz. Uygulama kapatılıp açılınca işaretler durur. 7 günden eski liste açılışta silinir (testle).
 
 ### Faz 4 — Özel sorular ve offline
