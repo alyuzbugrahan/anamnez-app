@@ -171,3 +171,11 @@ Her faz ayrı oturumda yapılır ve ayrı commit ile biter.
 
 - 21 soruluk ortak modül uzun. Hekim kısalttıktan sonra varsayılan olarak hangi soruların katlanmış geleceği belirlenecek.
 - Otomatik silme süresi (7 gün) hekimle teyit edilecek.
+
+## 10. Yayınlama
+
+- GitHub Pages'te yayınlanır: `https://<kullanıcı>.github.io/<depo>/`.
+- `.github/workflows/pages.yml`: `main` dalına push olunca `npm ci`, `npm run test`, `npm run build` çalışır; test ya da derleme geçmezse yayın yapılmaz. Yalnızca resmi `actions/*` eylemleri kullanılır.
+- Vite `base` yolu iş akışında depo adından verilir (`--base=/<depo>/`); kodda sabit yol yoktur.
+- Ekran durumu adreste değil `history.state` içinde tutulur; adres hep base yolunda kaldığı için yenileme ve doğrudan açma Pages'te 404 vermez.
+- `index.html` içinde `robots` `noindex, nofollow` vardır. Bu erişimi kısıtlamaz; site herkese açıktır.
