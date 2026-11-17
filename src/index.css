@@ -49,16 +49,28 @@ a {
   overflow-wrap: anywhere;
 }
 
+/* Checklist: başlık, sayaç, bölümler, soru satırı (SPEC kural 2-9). */
+.checklist-basi h1 {
+  margin: var(--b-2) 0 0;
+  overflow-wrap: anywhere;
+}
+
+.checklist-tani {
+  margin: 0;
+  color: var(--renk-ikincil);
+  font-size: var(--yazi-kucuk);
+}
+
 .sayac {
   position: sticky;
   top: 0;
   z-index: 1;
-  background: var(--renk-zemin);
+  margin: var(--b-3) 0 0;
   padding: var(--b-3) 0;
+  background: var(--renk-zemin);
   border-bottom: 2px solid var(--renk-metin);
   font-weight: 600;
-  display: flex;
-  justify-content: space-between;
+  font-variant-numeric: tabular-nums;
 }
 
 .sayac-kritik {
@@ -69,26 +81,73 @@ a {
   min-height: var(--dokunma);
   display: flex;
   align-items: center;
+  gap: var(--b-2);
+  margin-top: var(--b-4);
+  border-bottom: 1px solid var(--renk-cizgi);
   font-weight: 700;
+  list-style: none;
   cursor: pointer;
 }
 
-.soru {
-  padding: var(--b-3) 0;
-  border-bottom: 1px solid var(--renk-cizgi);
+.bolum summary::-webkit-details-marker {
+  display: none;
 }
 
-.soru.cevapli .soru-metin {
+/* Katlanma durumu metinle değil işaretle; ekran okuyucu details durumunu kendisi bildirir. */
+.bolum summary::before {
+  content: '▾';
+  width: 1em;
   color: var(--renk-soluk);
 }
 
-/* Uzun basmada iOS metin seçimi ve sistem menüsü açılmasın. */
+.bolum:not([open]) summary::before {
+  content: '▸';
+}
+
+.bolum-kalan {
+  margin-left: auto;
+  font-weight: 400;
+  font-size: var(--yazi-kucuk);
+  color: var(--renk-soluk);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Sol şerit yalnızca sorulmamış kritik soruda görünür; diğerlerinde saydam, hizalama bozulmaz. */
+.soru {
+  padding: var(--b-3) 0 var(--b-3) var(--b-3);
+  border-bottom: 1px solid var(--renk-cizgi);
+  border-left: 3px solid transparent;
+}
+
+.soru.kritik-acik {
+  border-left-color: var(--renk-kritik);
+}
+
+/* Soru metni kaynağı açan buton (SPEC kural 9). Uzun basmada iOS menüsü ve metin seçimi açılmasın. */
 .soru-metin {
+  display: block;
+  width: 100%;
+  min-height: var(--dokunma);
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: none;
+  color: var(--renk-metin);
+  text-align: left;
   -webkit-user-select: none;
   user-select: none;
   -webkit-touch-callout: none;
 }
 
+button.soru-metin {
+  cursor: pointer;
+}
+
+.soru.cevapli:not(.kritik-evet) .soru-metin {
+  color: var(--renk-soluk);
+}
+
+/* Cevap butonları zemin rengi üzerinde: kenar kontrastı yalnızca zeminde 3:1. */
 .soru-butonlar {
   display: flex;
   justify-content: flex-end;
@@ -97,7 +156,9 @@ a {
 }
 
 .soru-butonlar button {
-  min-width: 84px;
+  min-width: 88px;
+  min-height: var(--dokunma-cevap);
+  padding: 0 var(--b-4);
   border: 1px solid var(--renk-kenar);
   border-radius: var(--kose-kontrol);
   background: var(--renk-zemin);
@@ -108,6 +169,7 @@ a {
   background: var(--renk-ana);
   color: var(--renk-ana-ustu);
   border-color: transparent;
+  font-weight: 600;
 }
 
 .alt-sorular {
@@ -136,7 +198,9 @@ a {
   margin-left: var(--b-2);
 }
 
+/* Pencere iç boşluğu dialog'da değil iç kutuda: arka plana dokunma ile pencere içine dokunma ayrışır. */
 dialog {
+  padding: 0;
   color: var(--renk-metin);
   background: var(--renk-zemin);
   border: none;
@@ -144,18 +208,18 @@ dialog {
   box-shadow: var(--golge-pencere);
 }
 
+.pencere-ic {
+  padding: var(--b-4);
+}
+
+.pencere-baslik {
+  margin: 0 0 var(--b-2);
+  font-size: var(--yazi-govde);
+}
+
 .kaynak {
   max-width: 340px;
   overflow-wrap: anywhere;
-}
-
-.kaynak-baslik {
-  font-weight: 700;
-  margin-top: 0;
-}
-
-.kaynak form {
-  text-align: right;
 }
 
 .kaynak a {
@@ -178,12 +242,8 @@ dialog {
   padding: 0 var(--b-1);
 }
 
-.ust-baslik {
-  flex: 1;
-  font-weight: 700;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+.ust-cubuk .sag {
+  margin-left: auto;
 }
 
 /* Sık kullanılan butonlar ekranın altında, tek elle erişim için. */

@@ -26,10 +26,12 @@ export function OnayPenceresi({ mesaj, onayMetni, onOnay, onVazgec }: Props) {
       }}
       onClick={(e) => e.target === pencere.current && onVazgec()}
     >
-      <p>{mesaj}</p>
-      <div className="pencere-butonlar">
-        <button type="button" onClick={onVazgec}>Vazgeç</button>
-        <button type="button" className="tehlikeli" onClick={onOnay}>{onayMetni}</button>
+      <div className="pencere-ic">
+        <p>{mesaj}</p>
+        <div className="pencere-butonlar">
+          <button type="button" onClick={onVazgec}>Vazgeç</button>
+          <button type="button" className="tehlikeli" onClick={onOnay}>{onayMetni}</button>
+        </div>
       </div>
     </dialog>
   )

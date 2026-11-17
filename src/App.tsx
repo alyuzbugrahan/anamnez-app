@@ -108,10 +108,9 @@ function Uygulama({ veri }: { veri: SoruVerisi }) {
         <div className="ust-cubuk">
           <button type="button" onClick={geri}>‹ Geri</button>
           {gecerliEkran.ad === 'checklist' && liste && (
-            <>
-              <span className="ust-baslik">{liste.etiket}</span>
-              <button type="button" onClick={() => git({ ad: 'duzenle', listeId: liste.id })}>Düzenle</button>
-            </>
+            <button type="button" className="sag" onClick={() => git({ ad: 'duzenle', listeId: liste.id })}>
+              Düzenle
+            </button>
           )}
         </div>
       )}

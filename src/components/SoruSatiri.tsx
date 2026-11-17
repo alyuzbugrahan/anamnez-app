@@ -1,5 +1,5 @@
 import type { Soru } from '../data/sema'
-import { altSorularAcikMi, type Buton, type Cevap } from '../store/kurallar'
+import { altSorularAcikMi, butonlar, kaynakVarMi, type Buton, type Cevap } from '../store/kurallar'
 import { DogrulanmaliIsaret, KritikRozet } from './Rozet'
 import { useUzunBasma } from './uzunBasma'
 
@@ -14,19 +14,36 @@ interface Props {
 const ETIKET: Record<Buton, string> = { hayir: 'Hayır', evet: 'Evet', soruldu: 'Soruldu' }
 
 export function SoruSatiri({ soru, cevap, dogrulanmaliGoster, onBas, onKaynak }: Props) {
-  const uzunBasma = useUzunBasma(onKaynak)
-  const butonlar: Buton[] = soru.tip === 'acik' ? ['soruldu'] : ['hayir', 'evet']
+  const kaynak = useUzunBasma(onKaynak)
+  const kritik = soru.oncelik === 'kritik'
+  const sinif = [
+    'soru',
+    cevap && 'cevapli',
+    kritik && !cevap && 'kritik-acik',
+    // Kritik soruya Evet (ör. alerji var) gözden kaçmasın: metin soluklaşmaz.
+    kritik && cevap === 'evet' && 'kritik-evet',
+  ]
+  const metin = (
+    <>
+      {kritik && <KritikRozet />}
+      {soru.metin}
+      {dogrulanmaliGoster && soru.dogrulanmali && <DogrulanmaliIsaret />}
+    </>
+  )
 
   return (
-    <li className={`soru${cevap ? ' cevapli' : ''}`}>
-      <div className="soru-metin" {...uzunBasma}>
-        {soru.oncelik === 'kritik' && <KritikRozet />}
-        {soru.metin}
-        {dogrulanmaliGoster && soru.dogrulanmali && <DogrulanmaliIsaret />}
-      </div>
+    <li className={sinif.filter(Boolean).join(' ')}>
+      {kaynakVarMi(soru) ? (
+        <button type="button" className="soru-metin" aria-haspopup="dialog" {...kaynak}>
+          {metin}
+        </button>
+      ) : (
+        <p className="soru-metin">{metin}</p>
+      )}
       <div className="soru-butonlar">
-        {butonlar.map((b) => (
-          <button key={b} type="button" className={`cevap-${b}`} aria-pressed={cevap === b} onClick={() => onBas(b)}>
+        {butonlar(soru).map((b) => (
+          <button key={b} type="button" aria-pressed={cevap === b} onClick={() => onBas(b)}>
+            {cevap === b && <span aria-hidden="true">✓ </span>}
             {ETIKET[b]}
           </button>
         ))}

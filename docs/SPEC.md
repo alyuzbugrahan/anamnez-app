@@ -103,7 +103,7 @@ interface OzelSoru {
 6. **Doğrulanmalı işareti:** `dogrulanmali: true` olan sorunun yanında küçük bir işaret görünür. Ayarlar ekranından kapatılabilir (bölüm 6).
 7. **Sayaç:** Sayaçlar sorulmamış soruları sayar ve her yerde "kaldı" terimini kullanır. Checklist ekranının üstünde "X kaldı" yazar; sorulmamış kritik soru varsa "X kaldı · Y kritik" olur. Her bölüm başlığında o bölümde kalan soru sayısı yazar ("9 kaldı"). Yalnızca görünür sorular sayılır. İlerleme çubuğu yoktur.
 8. **Bölümler:** Checklist iki bölümdür: önce "Ortak", sonra tanının adı. Her bölüm katlanabilir. Özel sorular ilgili bölümün sonunda görünür ve evet/hayır sorusu gibi davranır: öncelik standart, doğrulanmalı değil, alt sorusu yok, sayaca girer. Kaynağı açılınca "Özel soru" yazar.
-9. **Kaynak:** Soru metnine dokununca kaynak adı ve varsa bağlantısı gösterilir. Uzun basma da aynı pencereyi açar. Soru metni klavyeyle de seçilip açılabilir. Satırda ayrı bir kaynak düğmesi yoktur.
+9. **Kaynak:** Soru metnine dokununca kaynak adı ve varsa bağlantısı gösterilir. Uzun basma da aynı pencereyi açar. Soru metni klavyeyle de seçilip açılabilir. Satırda ayrı bir kaynak düğmesi yoktur. Kaynağı olmayan sorunun (kaynak adı ve bağlantısı boş) metni dokunulabilir değildir ve pencere açılmaz. Kaynak ve onay pencereleri görünür bir butonla (Kapat / Vazgeç) ya da arka plana dokunarak kapanır.
 10. **Etiket uyarısı:** Etiket alanının altında "Hasta adı yazmayın" notu bulunur.
 11. **Liste düzenleme ve cevapların korunması:**
     - Bir listenin tanısı oluşturulduktan sonra değiştirilemez. Etiket, cinsiyet ve 65 yaş üstü düzenlenebilir.
@@ -123,7 +123,7 @@ Arayüz dili Türkçe. Tasarım 380 piksel genişliğe göre yapılır; dokunma 
 Görsel kurallar (değerler `src/tema.css` dosyasında tek yerde tutulur):
 
 - Renk yalnızca durum ve aksiyon bildirir: tek ana renk (koyu mavi) birincil aksiyon, seçili cevap ve odak içindir; kırmızı yalnızca kritik ve silme içindir. Geri kalanı nötrdür.
-- Cevaplanmış sorunun metni soluklaşır, seçili butonda ✓ işareti görünür; durum yalnızca renkle anlatılmaz. Kritik soruya Evet denmişse cevap etiketi soluklaşmaz.
+- Cevaplanmış sorunun metni soluklaşır, seçili butonda ✓ işareti görünür; durum yalnızca renkle anlatılmaz. Kritik soruya Evet denmişse soru metni soluklaşmaz.
 - Kart ve süs gölgesi yoktur; satırlar ince çizgiyle ayrılır.
 - Açık ve koyu tema vardır; tema telefonun sistem ayarını izler. Metin kontrastı her iki temada en az 4,5:1'dir.
 - Yazı boyutları `rem` ile tanımlanır.

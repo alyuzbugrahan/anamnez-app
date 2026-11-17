@@ -1,6 +1,8 @@
 import { describe, expect, it } from 'vitest'
 import type { Soru, SoruVerisi } from '../src/data/sema'
-import { altSorularAcikMi, bolumler, gorunurMu, sayac, sonrakiCevap, type ListeBilgisi } from '../src/store/kurallar'
+import { altSorularAcikMi, bolumler, butonlar, gorunurMu, kalan, kaynakVarMi, sayac, sonrakiCevap, type Buton, type ListeBilgisi } from '../src/store/kurallar'
+import { cevapla, yeniListe } from '../src/store/listeler'
+import { soruyaCevir } from '../src/store/ozelSorular'
 
 function soru(id: string, ek: Partial<Soru> = {}): Soru {
   return { id, metin: id, oncelik: 'standart', dogrulanmali: false, kaynak: { ad: 'K', url: '' }, alt_sorular: [], ...ek }
@@ -68,6 +70,56 @@ describe('sonrakiCevap', () => {
   it('soru tipine uymayan buton durumu değiştirmez', () => {
     expect(sonrakiCevap(acik, undefined, 'evet')).toBeUndefined()
     expect(sonrakiCevap(eh, 'evet', 'soruldu')).toBe('evet')
+  })
+})
+
+describe('butonlar', () => {
+  it('evet/hayır sorusunda Hayır sonra Evet, açık soruda yalnızca Soruldu', () => {
+    expect(butonlar(soru('eh'))).toEqual(['hayir', 'evet'])
+    expect(butonlar(soru('a', { tip: 'acik' }))).toEqual(['soruldu'])
+  })
+})
+
+// Checklist'teki dokunma yolu: sonrakiCevap sonucu cevapla ile listeye yazılır.
+describe('seçili butona tekrar dokunma', () => {
+  const dokun = (l: ReturnType<typeof yeniListe>, s: Soru, b: Buton) => cevapla(l, s.id, sonrakiCevap(s, l.cevaplar[s.id], b))
+  const bos = yeniListe({ etiket: 'Yatak 1', taniId: 't', cinsiyet: 'erkek', yas65Ustu: false })
+  const durumlar: [string, Buton][] = [['o1', 'evet'], ['o1', 'hayir'], ['o4', 'soruldu']]
+
+  it.each(durumlar)('%s / %s: iki dokunuşta seçim kalkar, kayıt silinir, sayaç geri döner', (id, b) => {
+    const s = veri.ortak.sorular.find((x) => x.id === id)!
+    const bir = dokun(bos, s, b)
+    expect(bir.cevaplar[id]).toBe(b)
+    const iki = dokun(bir, s, b)
+    expect(id in iki.cevaplar).toBe(false)
+    expect(sayac(veri, iki)).toEqual(sayac(veri, bos))
+  })
+})
+
+describe('kaynakVarMi', () => {
+  it('kaynak adı ya da bağlantısı varsa true', () => {
+    expect(kaynakVarMi(soru('a'))).toBe(true)
+    expect(kaynakVarMi(soru('b', { kaynak: { ad: '', url: 'https://ornek.org' } }))).toBe(true)
+  })
+  it('ikisi de boşsa (ya da yalnızca boşluk) false: metin buton olmaz', () => {
+    expect(kaynakVarMi(soru('c', { kaynak: { ad: '', url: '' } }))).toBe(false)
+    expect(kaynakVarMi(soru('d', { kaynak: { ad: '  ', url: ' ' } }))).toBe(false)
+  })
+  it('özel sorunun kaynağı "Özel soru" olarak görünür (kural 8)', () => {
+    expect(kaynakVarMi(soruyaCevir({ id: 'ozel-1', hedef: 'ortak', metin: 'X' }))).toBe(true)
+  })
+})
+
+describe('kalan', () => {
+  const ortak = veri.ortak.sorular
+  it('bölümde görünür ve sorulmamış soruları sayar', () => {
+    // erkek, 65 altı: o1 ve o4 görünür
+    expect(kalan(ortak, liste())).toBe(2)
+    expect(kalan(ortak, liste({ cinsiyet: 'kadin', yas65Ustu: true }))).toBe(4)
+  })
+  it('cevaplanan düşer; gizli sorunun cevabı etkilemez', () => {
+    expect(kalan(ortak, liste({ cevaplar: { o1: 'hayir' } }))).toBe(1)
+    expect(kalan(ortak, liste({ cevaplar: { o2: 'evet' } }))).toBe(2)
   })
 })
 

@@ -20,10 +20,19 @@ export function gorunurMu(soru: Soru, liste: Omit<ListeBilgisi, 'cevaplar'>): bo
   return true
 }
 
+// Kural 2 ve 3: satırda görünen butonlar, ekrandaki sırayla.
+export function butonlar(soru: Soru): Buton[] {
+  return soru.tip === 'acik' ? ['soruldu'] : ['hayir', 'evet']
+}
+
+// Kural 9: kaynağı olmayan sorunun metni dokunulabilir değildir.
+export function kaynakVarMi(soru: Soru): boolean {
+  return soru.kaynak.ad.trim() !== '' || soru.kaynak.url.trim() !== ''
+}
+
 // Kural 2 ve 3. undefined = sorulmadı.
 export function sonrakiCevap(soru: Soru, mevcut: Cevap | undefined, basilan: Buton): Cevap | undefined {
-  const izinli: Buton[] = soru.tip === 'acik' ? ['soruldu'] : ['evet', 'hayir']
-  if (!izinli.includes(basilan)) return mevcut
+  if (!butonlar(soru).includes(basilan)) return mevcut
   return mevcut === basilan ? undefined : basilan
 }
 
@@ -39,6 +48,11 @@ export function bolumler(veri: SoruVerisi, taniId: string, ozel: OzelSoru[] = []
   const tani = veri.tanilar.find((t) => t.id === taniId)
   if (!tani) return [ortak]
   return [ortak, { baslik: tani.ad, sorular: [...tani.sorular, ...ozelleri(tani.id)] }]
+}
+
+// Kural 7: bölüm başlığındaki "X kaldı". Yalnızca görünür ve sorulmamış sorular.
+export function kalan(sorular: Soru[], liste: ListeBilgisi): number {
+  return sorular.filter((s) => gorunurMu(s, liste) && liste.cevaplar[s.id] === undefined).length
 }
 
 // Kural 7 ve 11: yalnızca görünür sorular sayılır; gizli sorunun saklı cevabı sayılmaz.
