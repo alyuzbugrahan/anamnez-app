@@ -389,11 +389,12 @@ dialog {
   font-weight: 600;
 }
 
-.hasta-sil {
+/* Satır içi silme (özel sorular). Metni sağ kenara hizalı; dokunma alanı 44px. */
+.sil-baglanti {
   border: none;
   background: none;
   color: var(--renk-kritik);
-  padding: 0 var(--b-2);
+  padding: 0 0 0 var(--b-3);
 }
 
 .alan {
@@ -566,6 +567,34 @@ h2 {
   margin: var(--b-6) 0 var(--b-2);
 }
 
+.alan-alti {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--b-2);
+}
+
+.sayi {
+  font-variant-numeric: tabular-nums;
+}
+
+.eklendi {
+  margin: 0;
+  font-weight: 400;
+}
+
+.eklendi:empty {
+  display: none;
+}
+
+h2 .ayrinti {
+  font-weight: 400;
+}
+
+/* Soruları düzenle (SPEC ekran 4) */
+.ozel-liste {
+  border-top: 1px solid var(--renk-cizgi);
+}
+
 .ozel-liste li {
   display: flex;
   align-items: center;
@@ -576,11 +605,22 @@ h2 {
 
 .ozel-liste span {
   flex: 1;
+  padding: var(--b-2) 0;
   overflow-wrap: anywhere;
+}
+
+.hazir-liste {
+  margin: 0;
+  padding-left: var(--b-6);
+  color: var(--renk-ikincil);
 }
 
 .hazir-liste li {
   padding: var(--b-2) 0;
   border-bottom: 1px solid var(--renk-cizgi);
-  color: var(--renk-ikincil);
+}
+
+.hazir-liste li::marker {
+  color: var(--renk-soluk);
+  font-variant-numeric: tabular-nums;
 }
