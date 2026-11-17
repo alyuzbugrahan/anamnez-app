@@ -1,0 +1,68 @@
+/* Tasarım kuralları tek yerde (SPEC bölüm 6, "Görsel kurallar"). Ekran stilleri yalnızca bu değişkenleri kullanır. */
+
+:root {
+  color-scheme: light dark;
+
+  /* Renk: tek ana renk + nötrler + kritik. Evet ile Hayır aynı renk (ana). */
+  --renk-ana: #1d4f91;
+  --renk-ana-ustu: #ffffff; /* ana renk zeminindeki yazı */
+  --renk-ana-pasif: #9aaecb;
+  --renk-metin: #1a1d21;
+  --renk-ikincil: #4a5058;
+  --renk-soluk: #646a72; /* cevaplanmış soru, ayrıntı */
+  --renk-cizgi: #d5d8dc; /* satır ayırıcı, süs değil */
+  --renk-kenar: #8a9098; /* buton/alan kenarı; yalnızca zemin üzerinde 3:1 */
+  --renk-zemin: #ffffff;
+  --renk-yuzey: #f3f4f6;
+  --renk-kritik: #b3261e;
+  --renk-kritik-ustu: #ffffff;
+  --renk-kritik-zemin: #fbeceb;
+  --renk-dogrulanmali: #8a5300;
+  --golge-pencere: 0 8px 24px rgb(0 0 0 / 0.18);
+
+  /* Yazı: sistem fontu, boyutlar rem (kök 16px). */
+  --font: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --yazi-rozet: 0.8125rem; /* 13px, yalnızca rozet */
+  --yazi-kucuk: 0.9375rem; /* 15px, ikincil metin */
+  --yazi-govde: 1.0625rem; /* 17px, soru metni */
+  --yazi-baslik: 1.25rem; /* 20px, ekran başlığı */
+  --satir: 1.4;
+
+  /* Boşluk: 4px ölçeği. Bunların dışında değer kullanılmaz. */
+  --b-1: 0.25rem;
+  --b-2: 0.5rem;
+  --b-3: 0.75rem;
+  --b-4: 1rem;
+  --b-6: 1.5rem;
+  --b-8: 2rem;
+
+  /* Köşe: liste satırları köşesiz (kart yok). */
+  --kose-rozet: 3px;
+  --kose-kontrol: 6px;
+  --kose-pencere: 10px;
+
+  /* Dokunma hedefleri */
+  --dokunma: 44px;
+  --dokunma-cevap: 48px;
+  --genislik: 380px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --renk-ana: #8db4ec;
+    --renk-ana-ustu: #121417;
+    --renk-ana-pasif: #3d4a5c;
+    --renk-metin: #e6e8eb;
+    --renk-ikincil: #b8bec6;
+    --renk-soluk: #9aa1a9;
+    --renk-cizgi: #2e3238;
+    --renk-kenar: #5d646c;
+    --renk-zemin: #121417;
+    --renk-yuzey: #1c1f23;
+    --renk-kritik: #ff8a80;
+    --renk-kritik-ustu: #121417;
+    --renk-kritik-zemin: #3a1d1c;
+    --renk-dogrulanmali: #e0b060;
+    --golge-pencere: 0 8px 24px rgb(0 0 0 / 0.6);
+  }
+}

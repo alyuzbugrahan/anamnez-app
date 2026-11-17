@@ -1,23 +1,20 @@
-:root {
-  font-family: system-ui, sans-serif;
-  font-size: 17px;
-  line-height: 1.4;
-  color: #1a1a1a;
-  background: #fff;
-}
-
 body {
   margin: 0;
+  font-family: var(--font);
+  font-size: var(--yazi-govde);
+  line-height: var(--satir);
+  color: var(--renk-metin);
+  background: var(--renk-zemin);
 }
 
 main {
-  max-width: 380px;
+  max-width: var(--genislik);
   margin: 0 auto;
-  padding: 0 12px 96px;
+  padding: 0 var(--b-3) 96px;
 }
 
 h1 {
-  font-size: 1.3rem;
+  font-size: var(--yazi-baslik);
 }
 
 ul {
@@ -28,17 +25,27 @@ ul {
 
 button {
   font: inherit;
-  min-height: 44px;
-  min-width: 44px;
+  color: var(--renk-metin);
+  min-height: var(--dokunma);
+  min-width: var(--dokunma);
+}
+
+:focus-visible {
+  outline: 2px solid var(--renk-ana);
+  outline-offset: 2px;
+}
+
+a {
+  color: var(--renk-ana);
 }
 
 [role='alert'] h1 {
-  color: #b00020;
+  color: var(--renk-kritik);
 }
 
 .ayrinti {
-  color: #666;
-  font-size: 0.85rem;
+  color: var(--renk-soluk);
+  font-size: var(--yazi-kucuk);
   overflow-wrap: anywhere;
 }
 
@@ -46,34 +53,33 @@ button {
   position: sticky;
   top: 0;
   z-index: 1;
-  background: #fff;
-  padding: 10px 0;
-  border-bottom: 2px solid #1a1a1a;
+  background: var(--renk-zemin);
+  padding: var(--b-3) 0;
+  border-bottom: 2px solid var(--renk-metin);
   font-weight: 600;
   display: flex;
   justify-content: space-between;
 }
 
 .sayac-kritik {
-  color: #b00020;
+  color: var(--renk-kritik);
 }
 
 .bolum summary {
-  min-height: 44px;
+  min-height: var(--dokunma);
   display: flex;
   align-items: center;
   font-weight: 700;
-  font-size: 1.1rem;
   cursor: pointer;
 }
 
 .soru {
-  padding: 10px 0;
-  border-bottom: 1px solid #ddd;
+  padding: var(--b-3) 0;
+  border-bottom: 1px solid var(--renk-cizgi);
 }
 
 .soru.cevapli .soru-metin {
-  color: #777;
+  color: var(--renk-soluk);
 }
 
 /* Uzun basmada iOS metin seçimi ve sistem menüsü açılmasın. */
@@ -86,63 +92,60 @@ button {
 .soru-butonlar {
   display: flex;
   justify-content: flex-end;
-  gap: 8px;
-  margin-top: 6px;
+  gap: var(--b-2);
+  margin-top: var(--b-2);
 }
 
 .soru-butonlar button {
   min-width: 84px;
-  border: 1px solid #888;
-  border-radius: 8px;
-  background: #f4f4f4;
+  border: 1px solid var(--renk-kenar);
+  border-radius: var(--kose-kontrol);
+  background: var(--renk-zemin);
 }
 
+/* Evet, Hayır ve Soruldu seçiliyken aynı renk: Evet "iyi" anlamına gelmez (SPEC kural 2). */
 .soru-butonlar button[aria-pressed='true'] {
-  color: #fff;
+  background: var(--renk-ana);
+  color: var(--renk-ana-ustu);
   border-color: transparent;
-}
-
-.cevap-evet[aria-pressed='true'] {
-  background: #1b6e3a;
-}
-
-.cevap-hayir[aria-pressed='true'] {
-  background: #555;
-}
-
-.cevap-soruldu[aria-pressed='true'] {
-  background: #1d4f91;
 }
 
 .alt-sorular {
   list-style: disc;
-  padding-left: 22px;
-  margin-top: 8px;
-  font-size: 0.95rem;
+  padding-left: var(--b-6);
+  margin-top: var(--b-2);
+  font-size: var(--yazi-kucuk);
+  color: var(--renk-ikincil);
 }
 
 .rozet-kritik {
   display: inline-block;
-  background: #b00020;
-  color: #fff;
-  font-size: 0.75rem;
+  background: var(--renk-kritik);
+  color: var(--renk-kritik-ustu);
+  font-size: var(--yazi-rozet);
   font-weight: 700;
-  border-radius: 4px;
-  padding: 1px 6px;
-  margin-right: 6px;
+  border-radius: var(--kose-rozet);
+  padding: 1px var(--b-1);
+  margin-right: var(--b-2);
   vertical-align: 1px;
 }
 
 .isaret-dogrulanmali {
-  color: #aaa;
-  font-size: 0.75rem;
-  margin-left: 6px;
+  color: var(--renk-dogrulanmali);
+  font-size: var(--yazi-rozet);
+  margin-left: var(--b-2);
+}
+
+dialog {
+  color: var(--renk-metin);
+  background: var(--renk-zemin);
+  border: none;
+  border-radius: var(--kose-pencere);
+  box-shadow: var(--golge-pencere);
 }
 
 .kaynak {
   max-width: 340px;
-  border: none;
-  border-radius: 12px;
   overflow-wrap: anywhere;
 }
 
@@ -158,21 +161,21 @@ button {
 .kaynak a {
   display: inline-flex;
   align-items: center;
-  min-height: 44px;
+  min-height: var(--dokunma);
 }
 
 .ust-cubuk {
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding-top: 8px;
+  gap: var(--b-2);
+  padding-top: var(--b-2);
 }
 
 .ust-cubuk button {
   border: none;
   background: none;
-  color: #1d4f91;
-  padding: 0 4px;
+  color: var(--renk-ana);
+  padding: 0 var(--b-1);
 }
 
 .ust-baslik {
@@ -191,36 +194,37 @@ button {
   bottom: 0;
   display: flex;
   justify-content: flex-end;
-  gap: 8px;
-  padding: 12px max(12px, calc((100vw - 380px) / 2 + 12px)) calc(12px + env(safe-area-inset-bottom));
-  background: #fff;
-  border-top: 1px solid #ddd;
+  gap: var(--b-2);
+  padding: var(--b-3) max(var(--b-3), calc((100vw - var(--genislik)) / 2 + var(--b-3)))
+    calc(var(--b-3) + env(safe-area-inset-bottom));
+  background: var(--renk-zemin);
+  border-top: 1px solid var(--renk-cizgi);
 }
 
 .alt-cubuk button,
 .pencere-butonlar button {
-  padding: 0 18px;
-  border: 1px solid #888;
-  border-radius: 8px;
-  background: #f4f4f4;
+  padding: 0 var(--b-4);
+  border: 1px solid var(--renk-kenar);
+  border-radius: var(--kose-kontrol);
+  background: var(--renk-zemin);
 }
 
 .alt-cubuk .birincil {
   flex: 1;
-  background: #1d4f91;
+  background: var(--renk-ana);
   border-color: transparent;
-  color: #fff;
+  color: var(--renk-ana-ustu);
   font-weight: 600;
 }
 
 .alt-cubuk .birincil:disabled {
-  background: #9aaecb;
+  background: var(--renk-ana-pasif);
 }
 
 .hasta-listesi li {
   display: flex;
   align-items: stretch;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid var(--renk-cizgi);
 }
 
 .hasta-ac {
@@ -229,8 +233,7 @@ button {
   text-align: left;
   border: none;
   background: none;
-  padding: 10px 0;
-  color: inherit;
+  padding: var(--b-3) 0;
 }
 
 .hasta-etiket {
@@ -239,21 +242,21 @@ button {
 
 .hasta-tani,
 .hasta-sayac {
-  font-size: 0.9rem;
-  color: #555;
+  font-size: var(--yazi-kucuk);
+  color: var(--renk-ikincil);
 }
 
 .hasta-sil {
   border: none;
   background: none;
-  color: #b00020;
-  padding: 0 8px;
+  color: var(--renk-kritik);
+  padding: 0 var(--b-2);
 }
 
 .alan {
   display: grid;
-  gap: 6px;
-  margin: 0 0 18px;
+  gap: var(--b-2);
+  margin: 0 0 var(--b-4);
   padding: 0;
   border: none;
   font-weight: 600;
@@ -261,33 +264,36 @@ button {
 
 .alan legend {
   padding: 0;
-  margin-bottom: 6px;
+  margin-bottom: var(--b-2);
 }
 
-.alan input {
+.alan input,
+.alan select {
   font: inherit;
   font-weight: 400;
-  min-height: 44px;
-  padding: 0 10px;
-  border: 1px solid #888;
-  border-radius: 8px;
+  min-height: var(--dokunma);
+  padding: 0 var(--b-3);
+  border: 1px solid var(--renk-kenar);
+  border-radius: var(--kose-kontrol);
+  color: var(--renk-metin);
+  background: var(--renk-zemin);
 }
 
 .uyari {
   font-weight: 400;
-  font-size: 0.85rem;
-  color: #b00020;
+  font-size: var(--yazi-kucuk);
+  color: var(--renk-kritik);
 }
 
 .kilitli {
   margin: 0;
   font-weight: 400;
-  color: #555;
+  color: var(--renk-ikincil);
 }
 
 .tani-secim {
   display: grid;
-  gap: 6px;
+  gap: var(--b-2);
   max-height: 300px;
   overflow-y: auto;
 }
@@ -296,16 +302,16 @@ button {
 .ikili button {
   width: 100%;
   text-align: left;
-  padding: 0 12px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  background: #fff;
+  padding: 0 var(--b-3);
+  border: 1px solid var(--renk-kenar);
+  border-radius: var(--kose-kontrol);
+  background: var(--renk-zemin);
   font-weight: 400;
 }
 
 .ikili {
   display: flex;
-  gap: 8px;
+  gap: var(--b-2);
 }
 
 .ikili button {
@@ -314,47 +320,46 @@ button {
 
 .tani-secim button[aria-pressed='true'],
 .ikili button[aria-pressed='true'] {
-  background: #1d4f91;
+  background: var(--renk-ana);
   border-color: transparent;
-  color: #fff;
+  color: var(--renk-ana-ustu);
 }
 
 .secim {
-  min-height: 44px;
+  min-height: var(--dokunma);
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: var(--b-3);
 }
 
 .secim input {
   width: 22px;
   height: 22px;
+  accent-color: var(--renk-ana);
 }
 
 .pencere {
   max-width: 320px;
-  border: none;
-  border-radius: 12px;
 }
 
 .pencere-butonlar {
   display: flex;
   justify-content: flex-end;
-  gap: 8px;
+  gap: var(--b-2);
 }
 
 .pencere-butonlar .tehlikeli {
-  background: #b00020;
+  background: var(--renk-kritik);
   border-color: transparent;
-  color: #fff;
+  color: var(--renk-kritik-ustu);
 }
 
 .kayit-hatasi {
-  background: #fdecee;
-  color: #b00020;
-  padding: 8px;
-  border-radius: 8px;
-  font-size: 0.9rem;
+  background: var(--renk-kritik-zemin);
+  color: var(--renk-kritik);
+  padding: var(--b-2);
+  border-radius: var(--kose-kontrol);
+  font-size: var(--yazi-kucuk);
 }
 
 /* Hastalar: üst satırda Ayarlar ve Soruları düzenle, en altta tam genişlik Yeni liste. */
@@ -375,26 +380,16 @@ main:has(.iki-satir) {
 }
 
 h2 {
-  font-size: 1.05rem;
-  margin: 20px 0 8px;
-}
-
-.alan select {
-  font: inherit;
-  font-weight: 400;
-  min-height: 44px;
-  padding: 0 10px;
-  border: 1px solid #888;
-  border-radius: 8px;
-  background: #fff;
+  font-size: var(--yazi-govde);
+  margin: var(--b-6) 0 var(--b-2);
 }
 
 .ozel-liste li {
   display: flex;
   align-items: center;
-  gap: 8px;
-  min-height: 44px;
-  border-bottom: 1px solid #ddd;
+  gap: var(--b-2);
+  min-height: var(--dokunma);
+  border-bottom: 1px solid var(--renk-cizgi);
 }
 
 .ozel-liste span {
@@ -403,7 +398,7 @@ h2 {
 }
 
 .hazir-liste li {
-  padding: 8px 0;
-  border-bottom: 1px solid #eee;
-  color: #555;
+  padding: var(--b-2) 0;
+  border-bottom: 1px solid var(--renk-cizgi);
+  color: var(--renk-ikincil);
 }

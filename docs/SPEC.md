@@ -96,14 +96,14 @@ interface OzelSoru {
 ## 5. Davranış kuralları
 
 1. **Görünürlük:** `kosul: "kadin"` olan soru yalnızca cinsiyeti kadın olan listede, `kosul: "65_ustu"` olan soru yalnızca `yas65Ustu` işaretli listede görünür.
-2. **Evet/hayır sorusu:** Üç durum vardır: sorulmadı, hayır, evet. Satırda "Hayır" ve "Evet" olmak üzere iki buton bulunur. Seçili butona tekrar basılınca durum sorulmadıya döner.
+2. **Evet/hayır sorusu:** Üç durum vardır: sorulmadı, hayır, evet. Satırda "Hayır" ve "Evet" olmak üzere iki buton bulunur. Seçili butona tekrar basılınca durum sorulmadıya döner. Evet ve Hayır seçiliyken aynı renkte görünür; anamnezde Evet "iyi" anlamına gelmez (ör. alerji var).
 3. **Açık soru (`tip: "acik"`):** İki durum vardır: sorulmadı, soruldu. Tek bir "Soruldu" butonu bulunur.
 4. **Alt sorular:** Ana soru "evet" ya da "soruldu" olduğunda altında liste olarak açılır. İşaretlenmez, veri girilmez.
 5. **Kritik rozeti:** `oncelik: "kritik"` olan sorunun yanında belirgin bir rozet görünür.
-6. **Doğrulanmalı işareti:** `dogrulanmali: true` olan sorunun yanında soluk bir işaret görünür. Ayarlar ekranından kapatılabilir (bölüm 6).
-7. **Sayaç:** Checklist ekranının üstünde "X soru sorulmadı" yazar. Sorulmamış kritik soru varsa sayısı ayrıca gösterilir. Yalnızca görünür sorular sayılır.
-8. **Bölümler:** Checklist iki bölümdür: önce "Ortak", sonra tanının adı. Her bölüm katlanabilir. Özel sorular ilgili bölümün sonunda görünür ve evet/hayır sorusu gibi davranır: öncelik standart, doğrulanmalı değil, alt sorusu yok, sayaca girer. Uzun basınca kaynak olarak "Özel soru" yazar.
-9. **Kaynak:** Soruya uzun basınca kaynak adı ve varsa bağlantısı gösterilir.
+6. **Doğrulanmalı işareti:** `dogrulanmali: true` olan sorunun yanında küçük bir işaret görünür. Ayarlar ekranından kapatılabilir (bölüm 6).
+7. **Sayaç:** Sayaçlar sorulmamış soruları sayar ve her yerde "kaldı" terimini kullanır. Checklist ekranının üstünde "X kaldı" yazar; sorulmamış kritik soru varsa "X kaldı · Y kritik" olur. Her bölüm başlığında o bölümde kalan soru sayısı yazar ("9 kaldı"). Yalnızca görünür sorular sayılır. İlerleme çubuğu yoktur.
+8. **Bölümler:** Checklist iki bölümdür: önce "Ortak", sonra tanının adı. Her bölüm katlanabilir. Özel sorular ilgili bölümün sonunda görünür ve evet/hayır sorusu gibi davranır: öncelik standart, doğrulanmalı değil, alt sorusu yok, sayaca girer. Kaynağı açılınca "Özel soru" yazar.
+9. **Kaynak:** Soru metnine dokununca kaynak adı ve varsa bağlantısı gösterilir. Uzun basma da aynı pencereyi açar. Soru metni klavyeyle de seçilip açılabilir. Satırda ayrı bir kaynak düğmesi yoktur.
 10. **Etiket uyarısı:** Etiket alanının altında "Hasta adı yazmayın" notu bulunur.
 11. **Liste düzenleme ve cevapların korunması:**
     - Bir listenin tanısı oluşturulduktan sonra değiştirilemez. Etiket, cinsiyet ve 65 yaş üstü düzenlenebilir.
@@ -112,13 +112,21 @@ interface OzelSoru {
 
 ## 6. Ekranlar
 
-1. **Hastalar (ana ekran):** Açık listeler; her satırda etiket, tanı adı ve sorulmamış soru sayısı. "Yeni liste" butonu. Listeyi sola kaydırınca ya da menüden "Sil".
-2. **Yeni liste:** Etiket, tanı seçimi (aranabilir liste), cinsiyet, 65 yaş üstü işareti.
+1. **Hastalar (ana ekran):** Açık listeler; her satırda etiket, tanı adı ve kalan soru sayısı (sorulmamış kritik soru varsa sayısı ayrıca). Listede satır içi silme yoktur. Altta "Yeni liste" butonu; "Ayarlar" ve "Soruları düzenle" üstte, ikinci planda.
+2. **Yeni liste:** Etiket, cinsiyet, 65 yaş üstü işareti, tanı seçimi (aranabilir liste). Eksik alan varsa buton pasiftir ve hangi alanın eksik olduğu yazar. Aynı ekran listeyi düzenlemek için de açılır: tanı kilitlidir ve en altta "Listeyi sil" bulunur (silmeden önce onay).
 3. **Checklist:** Bölüm 5'teki kurallar.
 4. **Soruları düzenle:** Hastalar ekranındaki "Soruları düzenle" butonuyla açılır. Hedef seçimi (ortak ya da tanı), özel soru ekleme ve silme (silmeden önce onay). Hazır sorular burada yalnızca okunur. Metin alanının altında "Hasta bilgisi yazmayın" notu bulunur.
 5. **Ayarlar:** Hastalar ekranından açılır. "Doğrulanmalı işaretini göster" tercihi burada durur ve `localStorage`'da saklanır. İçerik sürümü (`sorular.json` içindeki `surum` ve `guncelleme`) yazar. Uygulama ana ekrandan değil tarayıcı sekmesinde açıldıysa "Verilerin korunması için ana ekrana ekleyin" notu görünür. "Güncellemeleri denetle" butonu bulunur (bölüm 7).
 
 Arayüz dili Türkçe. Tasarım 380 piksel genişliğe göre yapılır; dokunma hedefleri en az 44 piksel.
+
+Görsel kurallar (değerler `src/tema.css` dosyasında tek yerde tutulur):
+
+- Renk yalnızca durum ve aksiyon bildirir: tek ana renk (koyu mavi) birincil aksiyon, seçili cevap ve odak içindir; kırmızı yalnızca kritik ve silme içindir. Geri kalanı nötrdür.
+- Cevaplanmış sorunun metni soluklaşır, seçili butonda ✓ işareti görünür; durum yalnızca renkle anlatılmaz. Kritik soruya Evet denmişse cevap etiketi soluklaşmaz.
+- Kart ve süs gölgesi yoktur; satırlar ince çizgiyle ayrılır.
+- Açık ve koyu tema vardır; tema telefonun sistem ayarını izler. Metin kontrastı her iki temada en az 4,5:1'dir.
+- Yazı boyutları `rem` ile tanımlanır.
 
 ## 7. Teknik
 
