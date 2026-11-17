@@ -281,29 +281,107 @@ dialog {
   background: var(--renk-ana-pasif);
 }
 
-.hasta-listesi li {
+/* Hastalar (SPEC ekran 1): satırın asıl bilgisi etiket ve kalan; ikincil ekranlar üstte. */
+.hastalar-basi {
   display: flex;
-  align-items: stretch;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--b-2);
+  padding-top: var(--b-2);
+}
+
+.hastalar-basi h1 {
+  margin: var(--b-3) 0;
+}
+
+/* Son bağlantının iç boşluğu taşar; metin listenin sağ kenarıyla hizalanır, dokunma alanı küçülmez. */
+.ikincil-baglantilar {
+  display: flex;
+  margin-right: calc(-1 * var(--b-2));
+}
+
+.ikincil-baglantilar button {
+  border: none;
+  background: none;
+  color: var(--renk-ana);
+  font-size: var(--yazi-kucuk);
+  padding: 0 var(--b-2);
+}
+
+.hasta-listesi {
+  border-top: 1px solid var(--renk-cizgi);
+}
+
+.hasta-listesi li {
   border-bottom: 1px solid var(--renk-cizgi);
 }
 
 .hasta-ac {
-  flex: 1;
-  display: grid;
-  text-align: left;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: var(--b-3);
+  padding: var(--b-3) 0;
   border: none;
   background: none;
-  padding: var(--b-3) 0;
+  text-align: left;
+}
+
+.hasta-sol {
+  flex: 1;
+  min-width: 0;
+  display: grid;
 }
 
 .hasta-etiket {
   font-weight: 700;
+  overflow-wrap: anywhere;
 }
 
-.hasta-tani,
-.hasta-sayac {
+.hasta-tani {
   font-size: var(--yazi-kucuk);
   color: var(--renk-ikincil);
+}
+
+.hasta-sag {
+  display: grid;
+  justify-items: end;
+  font-size: var(--yazi-kucuk);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.hasta-kritik {
+  color: var(--renk-kritik);
+}
+
+.hasta-ok {
+  color: var(--renk-soluk);
+  font-size: var(--yazi-baslik);
+}
+
+.bos-durum {
+  padding: var(--b-8) 0;
+}
+
+.bos-durum p {
+  margin: 0 0 var(--b-2);
+}
+
+.bos-durum p:first-child {
+  font-weight: 600;
+}
+
+/* Düzenle ekranındaki "Listeyi sil": birincil değil, ama tehlikeli olduğu belli. */
+.tehlikeli-ikincil {
+  width: 100%;
+  margin-top: var(--b-6);
+  border: 1px solid var(--renk-kritik);
+  border-radius: var(--kose-kontrol);
+  background: var(--renk-zemin);
+  color: var(--renk-kritik);
+  font-weight: 600;
 }
 
 .hasta-sil {
@@ -420,23 +498,6 @@ dialog {
   padding: var(--b-2);
   border-radius: var(--kose-kontrol);
   font-size: var(--yazi-kucuk);
-}
-
-/* Hastalar: üst satırda Ayarlar ve Soruları düzenle, en altta tam genişlik Yeni liste. */
-.alt-cubuk.iki-satir {
-  flex-wrap: wrap;
-}
-
-.alt-cubuk.iki-satir button:not(.birincil) {
-  flex: 1;
-}
-
-.alt-cubuk.iki-satir .birincil {
-  flex-basis: 100%;
-}
-
-main:has(.iki-satir) {
-  padding-bottom: 152px;
 }
 
 h2 {

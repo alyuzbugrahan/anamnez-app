@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { OnayPenceresi } from '../components/OnayPenceresi'
 import type { SoruVerisi } from '../data/sema'
 import { ETIKET_EN_FAZLA, etiketGecerliMi, type HastaListesi, type ListeAlanlari } from '../store/listeler'
 
@@ -7,11 +8,14 @@ interface Props {
   // Verilirse düzenleme modu: tanı kilitli (kural 11).
   mevcut?: HastaListesi
   onKaydet: (alanlar: ListeAlanlari) => void
+  // Yalnızca düzenleme modunda: "Listeyi sil" (SPEC ekran 2).
+  onSil?: () => void
 }
 
 const kucuk = (s: string) => s.toLocaleLowerCase('tr')
 
-export function YeniListe({ veri, mevcut, onKaydet }: Props) {
+export function YeniListe({ veri, mevcut, onKaydet, onSil }: Props) {
+  const [silOnayi, setSilOnayi] = useState(false)
   const [etiket, setEtiket] = useState(mevcut?.etiket ?? '')
   const [taniId, setTaniId] = useState(mevcut?.taniId ?? '')
   const [arama, setArama] = useState('')
@@ -76,6 +80,20 @@ export function YeniListe({ veri, mevcut, onKaydet }: Props) {
         <input type="checkbox" checked={yas65Ustu} onChange={(e) => setYas65Ustu(e.target.checked)} />
         65 yaş üstü
       </label>
+
+      {mevcut && onSil && (
+        <button type="button" className="tehlikeli-ikincil" onClick={() => setSilOnayi(true)}>
+          Listeyi sil
+        </button>
+      )}
+      {silOnayi && mevcut && onSil && (
+        <OnayPenceresi
+          mesaj={`"${mevcut.etiket}" listesi silinsin mi? Bu işlem geri alınamaz.`}
+          onayMetni="Sil"
+          onVazgec={() => setSilOnayi(false)}
+          onOnay={onSil}
+        />
+      )}
 
       <div className="alt-cubuk">
         <button type="submit" className="birincil" disabled={!hazir}>

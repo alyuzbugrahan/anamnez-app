@@ -121,7 +121,6 @@ function Uygulama({ veri }: { veri: SoruVerisi }) {
           listeler={listeler}
           ozelSorular={ozelSorular}
           onAc={(id) => git({ ad: 'checklist', listeId: id })}
-          onSil={(id) => setListeler((ls) => listeleriSil(ls, [id]))}
           onYeni={() => git({ ad: 'yeni' })}
           onAyarlar={() => git({ ad: 'ayarlar' })}
           onSorular={() => git({ ad: 'sorular' })}
@@ -145,6 +144,13 @@ function Uygulama({ veri }: { veri: SoruVerisi }) {
           onKaydet={(alanlar) => {
             listeGuncelle(liste.id, (l) => listeyiDuzenle(l, alanlar))
             geri()
+          }}
+          onSil={() => {
+            setListeler((ls) => listeleriSil(ls, [liste.id]))
+            // Geçmiş: [Hastalar, Checklist, Düzenle]. Düzenle'ye yalnızca Checklist'ten, Checklist'e yalnızca
+            // Hastalar'dan (ya da Hastalar'dan açılan Yeni liste yerine) gelinir; iki adım geri, var olan
+            // Hastalar kaydıdır. Böylece silinmiş listenin Checklist kaydı geride kalmaz, geri tuşu boşa basılmaz.
+            history.go(-2)
           }}
         />
       )}
