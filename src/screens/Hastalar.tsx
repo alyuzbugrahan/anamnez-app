@@ -1,5 +1,5 @@
 import type { SoruVerisi } from '../data/sema'
-import { sayac } from '../store/kurallar'
+import { hastaSirasi, sayac } from '../store/kurallar'
 import { OTOMATIK_SILME_GUN, type HastaListesi } from '../store/listeler'
 import type { OzelSoru } from '../store/ozelSorular'
 
@@ -15,7 +15,7 @@ interface Props {
 
 // SPEC ekran 1: asıl soru "hangi hastada iş kaldı?". Silme listenin Düzenle ekranında.
 export function Hastalar({ veri, listeler, ozelSorular, onAc, onYeni, onAyarlar, onSorular }: Props) {
-  const sirali = [...listeler].sort((a, b) => b.olusturma.localeCompare(a.olusturma))
+  const sirali = hastaSirasi(veri, listeler, ozelSorular)
 
   return (
     <>
@@ -46,8 +46,14 @@ export function Hastalar({ veri, listeler, ozelSorular, onAc, onYeni, onAyarlar,
                     <span className="hasta-tani">{veri.tanilar.find((t) => t.id === l.taniId)?.ad}</span>
                   </span>
                   <span className="hasta-sag">
-                    <span className="hasta-kalan">{sorulmadi} kaldı</span>
-                    {kritik > 0 && <span className="hasta-kritik">{kritik} kritik</span>}
+                    {sorulmadi === 0 ? (
+                      <span className="hasta-tamam">Tamam ✓</span>
+                    ) : (
+                      <>
+                        <span>{sorulmadi} kaldı</span>
+                        {kritik > 0 && <span className="hasta-kritik">{kritik} kritik</span>}
+                      </>
+                    )}
                   </span>
                   <span className="hasta-ok" aria-hidden="true">›</span>
                 </button>

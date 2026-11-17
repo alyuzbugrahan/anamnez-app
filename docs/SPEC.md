@@ -112,7 +112,7 @@ interface OzelSoru {
 
 ## 6. Ekranlar
 
-1. **Hastalar (ana ekran):** Açık listeler; her satırda etiket, tanı adı ve kalan soru sayısı (sorulmamış kritik soru varsa sayısı ayrıca). Listede satır içi silme yoktur. Altta "Yeni liste" butonu; "Ayarlar" ve "Soruları düzenle" üstte, ikinci planda.
+1. **Hastalar (ana ekran):** Açık listeler; her satırda etiket, tanı adı ve kalan soru sayısı (sorulmamış kritik soru varsa sayısı ayrıca). Sorusu kalmayan listede sayı yerine nötr renkte "Tamam ✓" yazar. Sıra: en yeni üstte; "Tamam ✓" listeler en altta, kendi aralarında yine en yeni üstte. Listede satır içi silme yoktur. Altta "Yeni liste" butonu; "Ayarlar" ve "Soruları düzenle" üstte, ikinci planda.
 2. **Yeni liste:** Etiket, cinsiyet, 65 yaş üstü işareti, tanı seçimi (aranabilir liste). Eksik alan varsa buton pasiftir ve hangi alanın eksik olduğu yazar. Aynı ekran listeyi düzenlemek için de açılır: tanı kilitlidir ve en altta "Listeyi sil" bulunur (silmeden önce onay).
 3. **Checklist:** Bölüm 5'teki kurallar.
 4. **Soruları düzenle:** Hastalar ekranındaki "Soruları düzenle" butonuyla açılır. Hedef seçimi (ortak ya da tanı), özel soru ekleme ve silme (silmeden önce onay). Hazır sorular burada yalnızca okunur. Metin alanının altında "Hasta bilgisi yazmayın" notu bulunur.

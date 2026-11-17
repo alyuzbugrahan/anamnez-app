@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import type { Soru, SoruVerisi } from '../src/data/sema'
-import { altSorularAcikMi, bolumler, butonlar, gorunurMu, kalan, kaynakVarMi, sayac, sonrakiCevap, type Buton, type ListeBilgisi } from '../src/store/kurallar'
+import { altSorularAcikMi, bolumler, butonlar, gorunurMu, hastaSirasi, kalan, kaynakVarMi, sayac, sonrakiCevap, type Buton, type ListeBilgisi } from '../src/store/kurallar'
 import { cevapla, yeniListe } from '../src/store/listeler'
 import { soruyaCevir } from '../src/store/ozelSorular'
 
@@ -161,5 +161,33 @@ describe('sayac', () => {
     const erkek = { ...kadin, cinsiyet: 'erkek' as const }
     expect(erkek.cevaplar.o2).toBe('evet')
     expect(sayac(veri, erkek)).toEqual({ sorulmadi: 4, kritik: 2 })
+  })
+})
+
+describe('hastaSirasi', () => {
+  // Erkek, 65 altı, tanı t: görünür sorular o1, o4, t1, t2
+  const hepsi = { o1: 'hayir', o4: 'soruldu', t1: 'evet', t2: 'hayir' } as const
+  const l = (etiket: string, gun: number, cevaplar: ListeBilgisi['cevaplar'] = {}) => ({
+    ...liste({ cevaplar }),
+    etiket,
+    olusturma: `2026-11-${String(gun).padStart(2, '0')}T08:00:00.000Z`,
+  })
+
+  it('bitmemiş listeler en yeni üstte', () => {
+    const sira = hastaSirasi(veri, [l('A', 10), l('B', 12), l('C', 11)])
+    expect(sira.map((x) => x.etiket)).toEqual(['B', 'C', 'A'])
+  })
+  it('sorusu kalmayan listeler en altta, kendi aralarında en yeni üstte', () => {
+    const sira = hastaSirasi(veri, [l('Bitti eski', 13, hepsi), l('Açık eski', 10), l('Bitti yeni', 14, hepsi), l('Açık yeni', 12)])
+    expect(sira.map((x) => x.etiket)).toEqual(['Açık yeni', 'Açık eski', 'Bitti yeni', 'Bitti eski'])
+  })
+  it('yalnızca kritik sorusu kalan liste bitmiş sayılmaz (kalan 0 olmalı)', () => {
+    const yalnizKritikKaldi = l('K', 15, { o4: 'soruldu', t2: 'hayir' })
+    expect(hastaSirasi(veri, [l('Bitti', 16, hepsi), yalnizKritikKaldi]).map((x) => x.etiket)).toEqual(['K', 'Bitti'])
+  })
+  it('girdi dizisini değiştirmez', () => {
+    const girdi = [l('A', 10), l('B', 12)]
+    hastaSirasi(veri, girdi)
+    expect(girdi.map((x) => x.etiket)).toEqual(['A', 'B'])
   })
 })

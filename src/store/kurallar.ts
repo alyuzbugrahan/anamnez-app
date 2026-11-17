@@ -55,6 +55,12 @@ export function kalan(sorular: Soru[], liste: ListeBilgisi): number {
   return sorular.filter((s) => gorunurMu(s, liste) && liste.cevaplar[s.id] === undefined).length
 }
 
+// SPEC ekran 1: en yeni üstte; sorusu kalmayan ("Tamam ✓") listeler en altta, kendi aralarında yine en yeni üstte.
+export function hastaSirasi<L extends ListeBilgisi & { olusturma: string }>(veri: SoruVerisi, listeler: L[], ozel: OzelSoru[] = []): L[] {
+  const bitti = new Map(listeler.map((l) => [l, sayac(veri, l, ozel).sorulmadi === 0]))
+  return [...listeler].sort((a, b) => Number(bitti.get(a)) - Number(bitti.get(b)) || b.olusturma.localeCompare(a.olusturma))
+}
+
 // Kural 7 ve 11: yalnızca görünür sorular sayılır; gizli sorunun saklı cevabı sayılmaz.
 export function sayac(veri: SoruVerisi, liste: ListeBilgisi, ozel: OzelSoru[] = []): { sorulmadi: number; kritik: number } {
   let sorulmadi = 0

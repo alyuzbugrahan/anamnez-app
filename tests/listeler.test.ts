@@ -1,6 +1,7 @@
 import { afterEach, describe, expect, it, vi } from 'vitest'
 import {
   cevapla,
+  eksikAlanlar,
   eskiListeIdleri,
   etiketGecerliMi,
   listeleriSil,
@@ -73,5 +74,17 @@ describe('liste işlemleri', () => {
     expect(etiketGecerliMi('  ')).toBe(false)
     expect(etiketGecerliMi('a'.repeat(20))).toBe(true)
     expect(etiketGecerliMi('a'.repeat(21))).toBe(false)
+  })
+})
+
+describe('eksikAlanlar', () => {
+  it('hepsi boşsa ekran sırasıyla etiket, cinsiyet, tanı', () => {
+    expect(eksikAlanlar({ etiket: '', taniId: '' })).toEqual(['etiket', 'cinsiyet', 'tani'])
+  })
+  it('yalnızca boşluktan oluşan etiket eksik sayılır', () => {
+    expect(eksikAlanlar({ etiket: '   ', taniId: 't', cinsiyet: 'kadin' })).toEqual(['etiket'])
+  })
+  it('hepsi doluysa boş', () => {
+    expect(eksikAlanlar({ etiket: 'Yatak 1', taniId: 't', cinsiyet: 'erkek' })).toEqual([])
   })
 })

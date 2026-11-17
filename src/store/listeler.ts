@@ -24,6 +24,17 @@ export function etiketGecerliMi(etiket: string): boolean {
   return e.length > 0 && e.length <= ETIKET_EN_FAZLA
 }
 
+export type EksikAlan = 'etiket' | 'cinsiyet' | 'tani'
+
+// SPEC ekran 2: eksik alan varsa buton pasif ve hangisinin eksik olduğu yazar. Ekrandaki sırayla.
+export function eksikAlanlar(a: { etiket: string; taniId: string; cinsiyet?: 'kadin' | 'erkek' }): EksikAlan[] {
+  const eksik: EksikAlan[] = []
+  if (!etiketGecerliMi(a.etiket)) eksik.push('etiket')
+  if (a.cinsiyet === undefined) eksik.push('cinsiyet')
+  if (a.taniId === '') eksik.push('tani')
+  return eksik
+}
+
 export function yeniListe(alanlar: ListeAlanlari, simdi = new Date()): HastaListesi {
   return {
     ...alanlar,

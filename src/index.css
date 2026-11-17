@@ -356,6 +356,11 @@ dialog {
   color: var(--renk-kritik);
 }
 
+/* Bitmiş liste: nötr renk; yeşil "iyi" anlamı taşımasın. */
+.hasta-tamam {
+  color: var(--renk-ikincil);
+}
+
 .hasta-ok {
   color: var(--renk-soluk);
   font-size: var(--yazi-baslik);
@@ -405,7 +410,7 @@ dialog {
   margin-bottom: var(--b-2);
 }
 
-.alan input,
+.alan input:not([type='radio'], [type='checkbox']),
 .alan select {
   font: inherit;
   font-weight: 400;
@@ -429,22 +434,18 @@ dialog {
   color: var(--renk-ikincil);
 }
 
+/* Yeni liste (SPEC ekran 2): tek seçimli gruplar gerçek radyo düğmesi; görünüm etiketin üzerinde.
+   Seçili seçenek ana renk ve ✓ ile, durum yalnızca renkle anlatılmaz. */
+.secili-tani {
+  margin: 0;
+  font-weight: 400;
+  font-size: var(--yazi-kucuk);
+  color: var(--renk-ikincil);
+}
+
 .tani-secim {
   display: grid;
   gap: var(--b-2);
-  max-height: 300px;
-  overflow-y: auto;
-}
-
-.tani-secim button,
-.ikili button {
-  width: 100%;
-  text-align: left;
-  padding: 0 var(--b-3);
-  border: 1px solid var(--renk-kenar);
-  border-radius: var(--kose-kontrol);
-  background: var(--renk-zemin);
-  font-weight: 400;
 }
 
 .ikili {
@@ -452,15 +453,73 @@ dialog {
   gap: var(--b-2);
 }
 
-.ikili button {
-  text-align: center;
+.secenek {
+  position: relative;
+  flex: 1;
+  display: block;
 }
 
-.tani-secim button[aria-pressed='true'],
-.ikili button[aria-pressed='true'] {
+.secenek input {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.secenek span {
+  display: flex;
+  align-items: center;
+  gap: var(--b-1);
+  min-height: var(--dokunma);
+  padding: 0 var(--b-3);
+  border: 1px solid var(--renk-kenar);
+  border-radius: var(--kose-kontrol);
+  background: var(--renk-zemin);
+  font-weight: 400;
+}
+
+.ikili .secenek span {
+  justify-content: center;
+}
+
+.secenek input:checked + span {
   background: var(--renk-ana);
   border-color: transparent;
   color: var(--renk-ana-ustu);
+  font-weight: 600;
+}
+
+.secenek input:checked + span::before {
+  content: '✓';
+}
+
+.secenek input:focus-visible + span {
+  outline: 2px solid var(--renk-ana);
+  outline-offset: 2px;
+}
+
+/* Alt çubuk iki sıralı kullanıldığında (eksik alan notu + buton) form içeriği altta kalmasın. */
+.liste-formu {
+  padding-bottom: var(--b-8);
+}
+
+.alt-cubuk.sutun {
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.alt-cubuk.sutun .birincil {
+  flex: none;
+}
+
+.eksik {
+  margin: 0;
+  text-align: center;
+  font-size: var(--yazi-kucuk);
+  color: var(--renk-ikincil);
 }
 
 .secim {
@@ -468,11 +527,13 @@ dialog {
   display: flex;
   align-items: center;
   gap: var(--b-3);
+  margin-bottom: var(--b-4);
 }
 
 .secim input {
   width: 22px;
   height: 22px;
+  margin: 0;
   accent-color: var(--renk-ana);
 }
 

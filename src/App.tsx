@@ -54,6 +54,11 @@ function ilkListeler(veri: SoruVerisi): HastaListesi[] {
   return listeleriSil(listeler, eskiListeIdleri(listeler))
 }
 
+// Geçmiş kaydı: ekran + Hastalar'dan kaç adım uzakta olduğu. Derinlik kaydın içinde durduğu için yenilemede korunur;
+// derinliği d olan kaydın d adım gerisi her zaman bu uygulamanın Hastalar kaydıdır (git +1 ekler, yerineGit korur).
+type Kayit = Ekran & { derinlik?: number }
+const derinlik = () => (history.state as Kayit | null)?.derinlik ?? 0
+
 // Ekranlar tarayıcı geçmişinde tutulur; geri tuşu bir önceki ekrana döner.
 function useEkran() {
   const [ekran, setEkran] = useState<Ekran>(() => (history.state as Ekran | null) ?? ANA_EKRAN)
@@ -68,14 +73,25 @@ function useEkran() {
   return {
     ekran,
     git: (e: Ekran) => {
-      history.pushState(e, '')
+      history.pushState({ ...e, derinlik: derinlik() + 1 } satisfies Kayit, '')
       setEkran(e)
     },
     yerineGit: (e: Ekran) => {
-      history.replaceState(e, '')
+      history.replaceState({ ...e, derinlik: derinlik() } satisfies Kayit, '')
       setEkran(e)
     },
     geri: () => history.back(),
+    // Aradaki kayıtları bırakmadan Hastalar'a döner. Derinlik bilinmiyorsa (ör. uygulama doğrudan bu ekranda
+    // açıldıysa) geçmişe güvenmez, bu kaydı Hastalar yapar; geri tuşu uygulamanın dışına boşa basılmadan çıkar.
+    anaEkranaDon: () => {
+      const d = derinlik()
+      if (d > 0) {
+        history.go(-d)
+      } else {
+        history.replaceState({ ...ANA_EKRAN, derinlik: 0 } satisfies Kayit, '')
+        setEkran(ANA_EKRAN)
+      }
+    },
   }
 }
 
@@ -86,7 +102,7 @@ function Uygulama({ veri }: { veri: SoruVerisi }) {
   const [listeKaydedildi, setListeKaydedildi] = useState(true)
   const [ayarKaydedildi, setAyarKaydedildi] = useState(true)
   const [ozelKaydedildi, setOzelKaydedildi] = useState(true)
-  const { ekran, git, yerineGit, geri } = useEkran()
+  const { ekran, git, yerineGit, geri, anaEkranaDon } = useEkran()
 
   useEffect(() => setListeKaydedildi(listeleriYaz(listeler)), [listeler])
   useEffect(() => setAyarKaydedildi(ayarlariYaz(ayarlar)), [ayarlar])
@@ -147,10 +163,8 @@ function Uygulama({ veri }: { veri: SoruVerisi }) {
           }}
           onSil={() => {
             setListeler((ls) => listeleriSil(ls, [liste.id]))
-            // Geçmiş: [Hastalar, Checklist, Düzenle]. Düzenle'ye yalnızca Checklist'ten, Checklist'e yalnızca
-            // Hastalar'dan (ya da Hastalar'dan açılan Yeni liste yerine) gelinir; iki adım geri, var olan
-            // Hastalar kaydıdır. Böylece silinmiş listenin Checklist kaydı geride kalmaz, geri tuşu boşa basılmaz.
-            history.go(-2)
+            // Silinmiş listenin Checklist kaydı geçmişte kalmasın, geri tuşu boşa basılmasın.
+            anaEkranaDon()
           }}
         />
       )}
